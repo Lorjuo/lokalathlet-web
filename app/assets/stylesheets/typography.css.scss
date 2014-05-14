@@ -1,0 +1,47 @@
+body {
+  font-family: sans-serif;
+
+  /*@media (max-width: $screen-xs-max) {
+    font-size: $font-size-base * 0.9;
+  }*/
+
+  @media (min-width: $screen-sm-min) {
+    font-size: $font-size-base * 0.9;
+  }
+
+  /*@media (min-width: $screen-md-min) {
+    font-size: $font-size-base * 1.1;
+  }*/
+
+  /*@media (min-width: $screen-lg-min) {
+    font-size: $font-size-base * 1.1;
+  }*/
+
+}
+
+/*li, h1, h2, h3, h4, h5 {
+    line-height: 125%;
+}*/
+
+a.decent {
+  color: $text-color;
+  outline: 0;
+  &, &:hover {
+    text-decoration: none;
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style:italic;
+}
+
+.caps {
+  &:first-letter{
+    font-size: 1.05em;
+  }
+  font-variant: small-caps;
+}

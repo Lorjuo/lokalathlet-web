@@ -26,6 +26,56 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# CUSTOM
+
+# Assets
+gem 'quiet_assets' # Disable some warnings
+
+# CSS
+# Bootstrap
+gem 'bootstrap-sass'
+
+# Forms
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
+# http://blog.plataformatec.com.br/2014/04/bootstrap-3-support-for-simple-form/
+
+# Input Elements
+  # Token Inputs
+  # Chosen check smartphone compatibility. Especially message and training group search
+  gem 'chosen-rails'
+  # For Rails 4 project, it is required to add compass-rails gem explicitly.
+  gem 'compass-rails', github: 'Compass/compass-rails'
+
+# JQuery
+gem 'jquery-ui-rails'
+
+group :development do
+  gem 'hirb'
+
+  gem "bullet"
+
+  # Annotations
+  gem 'annotate'
+  
+  # Debugger
+  gem 'debugger'
+  # gem 'byebug'
+  
+  # gem "rails-i18n-debug"
+  
+  gem 'thin'
+
+  # Error Handling
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
+  # Source maps
+  # http://blog.vhyza.eu/blog/2013/09/22/debugging-rails-4-coffeescript-and-sass-source-files-in-google-chrome/
+  #gem 'coffee-rails-source-maps'
+  #gem 'sass-rails-source-maps'
+end
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

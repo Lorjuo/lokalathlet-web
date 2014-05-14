@@ -1,0 +1,27 @@
+/* Base */
+$border-radius-base: 0px;
+
+/* Navigation */
+$navbar-height: 36px;
+$navbar-border-radius: 0px;
+
+/* Recalculate navbar-padding-vertical, because it is calculated wrong by the gem */
+// $navbar-padding-vertical: (($navbar-height - $line-height-computed) / 2);
+// @warn "line-height-computed is:" $line-height-computed;
+// @warn "navbar-height is:" $navbar-height;
+// @warn "navbar-padding-vertical is:" $navbar-padding-vertical;
+
+/* Grid */
+/* Number of columns in the grid system */
+$grid-columns: 12;
+/* Padding, to be divided by two and applied to the left and right of all columns */
+$grid-gutter-width: 12px;
+
+$container-large-desktop: 940px;
+// $container-large-desktop: $container-desktop;
+// $container-lg: $container-large-desktop;
+// @warn "container-large-desktop is:" $container-large-desktop;
+
+
+/* Buttons */
+$btn-primary-bg: #105090;

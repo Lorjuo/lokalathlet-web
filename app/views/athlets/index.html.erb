@@ -1,0 +1,41 @@
+<h1>Listing athlets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Starter</th>
+      <th>Firstname</th>
+      <th>Surname</th>
+      <th>Birthday</th>
+      <th>Sex</th>
+      <th>Club</th>
+      <th>Event</th>
+      <th>Relaytm</th>
+      <th>Relaystarter</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @athlets.each do |athlet| %>
+      <tr>
+        <td><%= athlet.starter %></td>
+        <td><%= athlet.firstname %></td>
+        <td><%= athlet.surname %></td>
+        <td><%= athlet.birthday %></td>
+        <td><%= athlet.sex %></td>
+        <td><%= athlet.club %></td>
+        <td><%= athlet.event %></td>
+        <td><%= athlet.relaytm %></td>
+        <td><%= athlet.relaystarter %></td>
+        <td><%= link_to 'Show', athlet %></td>
+        <td><%= link_to 'Edit', edit_athlet_path(athlet) %></td>
+        <td><%= link_to 'Destroy', athlet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Athlet', new_athlet_path %>

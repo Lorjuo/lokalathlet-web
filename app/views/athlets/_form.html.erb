@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Athlet</div>
+      <div class="panel-body">
+<%= simple_form_for(@athlet, html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :starter %>
+    <%= f.input :firstname %>
+    <%= f.input :surname %>
+    <%= f.input :birthday %>
+    <%= f.input :sex %>
+    <%= f.input :club %>
+    <%= f.input :event %>
+    <%= f.input :relaytm %>
+    <%= f.input :relaystarter %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

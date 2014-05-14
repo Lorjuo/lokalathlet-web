@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  starter: 1
+  firstname: MyString
+  surname: MyString
+  birthday: 2014-05-14
+  sex: MyString
+  club: MyString
+  event: MyString
+  relaytm: 1
+  relaystarter: 1
+
+two:
+  starter: 1
+  firstname: MyString
+  surname: MyString
+  birthday: 2014-05-14
+  sex: MyString
+  club: MyString
+  event: MyString
+  relaytm: 1
+  relaystarter: 1
