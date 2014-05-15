@@ -3,6 +3,7 @@ class AthletsController < ApplicationController
 
   include ActionView::Helpers::TextHelper
 
+  # Autocompletion
   def autocomplete_firstname
     render :json => Athlet.where('firstname LIKE ?', "%#{params[:term]}%").order(:firstname).pluck(:firstname).uniq
   end
@@ -15,13 +16,14 @@ class AthletsController < ApplicationController
     render :json => Athlet.where('club LIKE ?', "%#{params[:term]}%").order(:club).pluck(:club).uniq
   end
 
+
+  # Actions
   def import
     Athlet.import(params[:file])
     redirect_to(athlets_url, notice: "Athlets imported")
   end
 
-  # GET /athlets
-  # GET /athlets.json
+
   def index
     @athlets = Athlet.all
 
@@ -32,58 +34,76 @@ class AthletsController < ApplicationController
     end
   end
 
-  # GET /athlets/1
-  # GET /athlets/1.json
+
   def show
   end
 
-  # GET /athlets/new
+
   def new
     @athlet = Athlet.new
   end
 
-  # GET /athlets/1/edit
+
   def edit
   end
 
-  # POST /athlets
-  # POST /athlets.json
+
+  def edit_multiple
+    @athlets = Athlet.where(:relaystarter => 5)
+  end
+
+
   def create
     @athlet = Athlet.new(athlet_params)
 
-    respond_to do |format|
-      if @athlet.save
-        format.html { redirect_to @athlet, notice: 'Athlet was successfully created.' }
-        format.json { render :show, status: :created, location: @athlet }
-      else
-        format.html { render :new }
-        format.json { render json: @athlet.errors, status: :unprocessable_entity }
-      end
+    if @athlet.save
+      redirect_to @athlet, notice: 'Athlet was successfully created.'
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /athlets/1
-  # PATCH/PUT /athlets/1.json
+
   def update
-    respond_to do |format|
-      if @athlet.update(athlet_params)
-        format.html { redirect_to @athlet, notice: 'Athlet was successfully updated.' }
-        format.json { render :show, status: :ok, location: @athlet }
-      else
-        format.html { render :edit }
-        format.json { render json: @athlet.errors, status: :unprocessable_entity }
-      end
+    if @athlet.update(athlet_params)
+      redirect_to @athlet, notice: 'Athlet was successfully updated.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /athlets/1
-  # DELETE /athlets/1.json
+  def update_multiple
+    athlets_attributes = params[:athlets] # make a temporary copy
+    athlets_attributes.each do |key, value|
+      value[:starter] = params[:athlet][:starter]
+      value[:event] = params[:athlet][:event]
+      value[:club] = params[:athlet][:club]
+    end
+    @athlets = Athlet.update(athlets_attributes.keys, athlets_attributes.values)
+    @athlets.reject! { |p| p.errors.empty? }
+    if @athlets.empty?
+      redirect_to athlets_url
+    else
+      render "edit_multiple"
+    end
+
+    # debugger
+    # @athlets = Athlet.find(params[:athlet_ids])
+    # @athlets.reject! do |athlet|
+    #   athlet.update_attributes(params[:athlet].reject { |k,v| v.blank? })
+    # end
+    # if @athlets.empty?
+    #   redirect_to athlets_url
+    # else
+    #   @athlet = Athlet.new(params[:athlet])
+    #   render "edit_multiple"
+    # end
+  end
+
+
   def destroy
     @athlet.destroy
-    respond_to do |format|
-      format.html { redirect_to athlets_url, notice: 'Athlet was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to athlets_url, notice: 'Athlet was successfully destroyed.'
   end
 
   private

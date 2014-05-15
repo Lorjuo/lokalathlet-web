@@ -1,0 +1,32 @@
+/* DataTables */
+
+div.dataTables_length label {
+  white-space: nowrap;
+}
+.css_right {
+  float: right;
+}
+
+.control-label {
+  vertical-align: bottom !important;
+}
+
+.dataTables_processing {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.table.dataTable {
+
+  th.sorting_asc, th.sorting_desc {
+    background-color: #F9F9F9;
+  }
+
+  tr.odd td, tr.odd td.sorting_1 {
+    background-color: #F0F0F0;
+  }
+
+  tr.odd td, tr.even td.sorting_1 {
+    background-color: #F9F9F9;
+  }
+}

@@ -3,41 +3,40 @@
     <div class="panel panel-primary">
       <div class="panel-heading">Athlet</div>
       <div class="panel-body">
-<%= simple_form_for(@athlet, html: { class: 'form-horizontal' },
-  wrapper: :horizontal_form,
-  wrapper_mappings: {
-    check_boxes: :horizontal_radio_and_checkboxes,
-    radio_buttons: :horizontal_radio_and_checkboxes,
-    file: :horizontal_file_input,
-    boolean: :horizontal_boolean
-  }) do |f| %>
-  <%= f.error_notification %>
+        <%= simple_form_for(@athlet, html: { class: 'form-horizontal' },
+          wrapper: :horizontal_form,
+          wrapper_mappings: {
+            check_boxes: :horizontal_radio_and_checkboxes,
+            radio_buttons: :horizontal_radio_and_checkboxes,
+            file: :horizontal_file_input,
+            boolean: :horizontal_boolean
+          }) do |f| %>
+          <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :starter %>
+          <div class="form-inputs">
+            <%= f.input :starter %>
 
-    <%= f.input :firstname, :input_html => {
-      :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
-    <%= f.input :surname, :input_html => {
-      :data => { :autocomplete => autocomplete_surname_athlets_path } } %>
-    <%= f.input :birthday, :as => :integer, :input_html => { :value => @athlet.birthday } %>
-    <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
-    <%#= f.input :sex %>
+            <%= f.input :firstname, :input_html => {
+              :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
+            <%= f.input :surname, :input_html => {
+              :data => { :autocomplete => autocomplete_surname_athlets_path } } %>
+            <%= f.input :birthday, :as => :integer, :input_html => { :value => @athlet.birthday } %>
+            <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
+            <%#= f.input :sex %>
 
-    <%= f.input :sex, collection: [:M, :F] %>
+            <%= f.input :sex, collection: [:M, :F] %>
 
-    <%= f.input :club, :input_html => {
-      :data => { :autocomplete => autocomplete_club_athlets_path } } %>
-    <%= f.input :event %>
-    <%= f.input :relaytm %>
-    <%= f.input :relaystarter %>
-  </div>
+            <%= f.input :club, :input_html => {
+              :data => { :autocomplete => autocomplete_club_athlets_path } } %>
+            <%= f.input :event %>
+            <%= f.input :relaytm %>
+            <%= f.input :relaystarter %>
+          </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
-        </div>
+          <div class="form-actions">
+            <%= f.button :submit %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

@@ -26,6 +26,9 @@ class Athlet < ActiveRecord::Base
   validates :surname, :presence => true, length: { minimum: 3 }
   # validates :name, uniqueness: { scope: :year, message: "should happen once per year" }
   validates :birthday, :presence => true, :inclusion => 1900..2100
+  validates :sex, :presence => true
+  validates :club, :allow_blank => :true, length: { minimum: 3 }
+  validates :event, :presence => true
 
   # Getter / Setter
   # http://stackoverflow.com/questions/2033069/convert-data-when-putting-them-into-a-database-using-active-record
