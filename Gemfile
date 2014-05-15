@@ -38,6 +38,9 @@ gem 'bootstrap-sass'
 # Database
 gem 'mysql2'
 
+# Excel
+gem 'to_xls-rails'
+
 # Forms
 gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
 # http://blog.plataformatec.com.br/2014/04/bootstrap-3-support-for-simple-form/

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :athlets do
+    get :autocomplete_firstname, :on => :collection
     get :autocomplete_surname, :on => :collection
+    get :autocomplete_club, :on => :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

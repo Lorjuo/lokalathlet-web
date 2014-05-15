@@ -17,7 +17,8 @@
 //
 //= require bootstrap
 //# Bootstrap Javascript
-//= require autocomplete-rails
+//= require autocomplete-rails-uncompressed
+//= require monkey_patch_autocomplete
 // 
 //= require turbolinks
 // require_tree .

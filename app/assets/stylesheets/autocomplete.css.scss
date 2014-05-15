@@ -1,3 +1,7 @@
+ui-autocomplete .highlight {
+  text-decoration: underline;
+}
+
 .ui-autocomplete {
   position: absolute;
   top: 100%;
@@ -36,7 +40,7 @@
     color: #555555;
     white-space: nowrap;
 
-    &.ui-state-hover, &.ui-state-active {
+    &.ui-state-focus, &.ui-state-active {
       color: #ffffff;
       text-decoration: none;
       background-color: #0088cc;

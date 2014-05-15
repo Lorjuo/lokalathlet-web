@@ -1,17 +1,30 @@
 class AthletsController < ApplicationController
   before_action :set_athlet, only: [:show, :edit, :update, :destroy]
-  autocomplete :self, :surname, :full => true
+
+  include ActionView::Helpers::TextHelper
+
+  def autocomplete_firstname
+    render :json => Athlet.where('firstname LIKE ?', "%#{params[:term]}%").order(:firstname).pluck(:firstname)
+  end
 
   def autocomplete_surname
-    term = params[:term]
-    surnames = Athlet.where('surname LIKE ?', "%#{term}%").order(:surname).pluck(:surname)
-    render :json => surnames
+    render :json => Athlet.where('surname LIKE ?', "%#{params[:term]}%").order(:surname).pluck(:surname)
+  end
+
+  def autocomplete_club
+    render :json => Athlet.where('club LIKE ?', "%#{params[:term]}%").order(:club).pluck(:club)
   end
 
   # GET /athlets
   # GET /athlets.json
   def index
     @athlets = Athlet.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @athlets.to_csv }
+      format.xls { send_data @athlets.to_xls(:except => [:created_at, :updated_at]) }
+    end
   end
 
   # GET /athlets/1
