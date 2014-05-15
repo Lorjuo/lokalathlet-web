@@ -33,5 +33,5 @@
 //# at the moment needed for jquery dataTables responsive and gmaps4rails
 //
 // 
-//= require turbolinks
+// require turbolinks
 // require_tree .

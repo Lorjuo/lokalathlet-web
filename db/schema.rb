@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514202211) do
+ActiveRecord::Schema.define(version: 20140515134230) do
 
   create_table "athlets", force: true do |t|
     t.integer  "starter"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140514202211) do
     t.integer  "relaystarter"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "relaytmsize"
   end
 
 end

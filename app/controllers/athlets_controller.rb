@@ -25,12 +25,17 @@ class AthletsController < ApplicationController
 
 
   def index
-    @athlets = Athlet.all
+    @athlets = Athlet.where(:relaytmsize => 1).all
+    @relays = Athlet.where.not(:relaytmsize => 1).group(:relaystarter)
 
     respond_to do |format|
       format.html
-      format.csv { send_data @athlets.to_csv }
-      format.xls { send_data @athlets.to_xls(:except => [:created_at, :updated_at]) }
+      format.csv { send_data @relays.to_csv }
+      format.xls { send_data @relays.to_xls(
+        #:except => [:created_at, :updated_at]
+        :columns => Athlet::allowed_attributes,
+        :headers => Athlet::allowed_attributes
+      ) }
     end
   end
 
@@ -39,8 +44,14 @@ class AthletsController < ApplicationController
   end
 
 
+  def show_multiple
+    @athlets = Athlet.where(:relaystarter => params[:relaystarter])
+  end
+
+
   def new
     @athlet = Athlet.new
+    @athlet.relaytmsize = 1
   end
 
 
@@ -49,7 +60,7 @@ class AthletsController < ApplicationController
 
 
   def edit_multiple
-    @athlets = Athlet.where(:relaystarter => 5)
+    @athlets = Athlet.where(:relaystarter => params[:relaystarter])
   end
 
 
@@ -86,18 +97,6 @@ class AthletsController < ApplicationController
     else
       render "edit_multiple"
     end
-
-    # debugger
-    # @athlets = Athlet.find(params[:athlet_ids])
-    # @athlets.reject! do |athlet|
-    #   athlet.update_attributes(params[:athlet].reject { |k,v| v.blank? })
-    # end
-    # if @athlets.empty?
-    #   redirect_to athlets_url
-    # else
-    #   @athlet = Athlet.new(params[:athlet])
-    #   render "edit_multiple"
-    # end
   end
 
 
@@ -105,6 +104,14 @@ class AthletsController < ApplicationController
     @athlet.destroy
     redirect_to athlets_url, notice: 'Athlet was successfully destroyed.'
   end
+
+
+  def destroy_multiple
+    @athlets = Athlet.where(:relaystarter => params[:relaystarter])
+    @athlets.destroy_all
+    redirect_to athlets_url, notice: 'Relay was successfully destroyed.'
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -114,6 +121,6 @@ class AthletsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def athlet_params
-      params.require(:athlet).permit(:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter)
+      params.require(:athlet).permit(:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter, :relaytmsize)
     end
 end

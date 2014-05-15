@@ -1,0 +1,46 @@
+de:
+  "false": "nein"
+  "true": "ja"
+
+  general:
+    actions: Aktionen
+    add_files: Dateien hinzufügen...
+    always: immer
+    are_you_sure: Sind Sie sich sicher?
+    browse: Durchsuchen
+    cancel: Abbrechen
+    create: Erstellen
+    create_model: "%{model} hinzufügen"
+    date: Datum
+    destroy: Löschen
+    destroy_selected: Ausgewählte löschen
+    edit: Bearbeiten
+    edit_model: "%{model} bearbeiten"
+    edit_selected: Ausgewählte bearbeiten
+    editing: Bearbeite
+    here: hier
+    list: Übersicht
+    more: mehr
+    navigation: Navigation
+    never: niemals
+    reference: Verknüpfung
+    references: Verknüpfungen
+    search: Suche
+    search_term: Suchbegriff
+    send_email: Versende E-Mail
+    select_all: Alle auswählen
+    show: Details
+    time: Uhrzeit
+    time_from: von
+    time_to: bis
+    update: Update
+
+    small: Klein
+    medium: Mittel
+    large: Groß
+
+    current: Aktuelle
+    ancient: Ehemalige
+
+    summer: Sommer
+    winter: Winter

@@ -1,0 +1,36 @@
+<dl class="dl-horizontal">
+  <dt>Club</dt>
+  <dd><%= @athlets.first.club %></dd>
+
+  <dt>Event</dt>
+  <dd><%= @athlets.first.event %></dd>
+
+  <dt>Relaystarter</dt>
+  <dd><%= @athlets.first.relaystarter %></dd>
+</dl>
+
+<% @athlets.each do |athlet| %>
+
+  <dl class="dl-horizontal">
+    <dt>Starter</dt>
+    <dd><%= athlet.starter %></dd>
+
+    <dt>Firstname</dt>
+    <dd><%= athlet.firstname %></dd>
+
+    <dt>Surname</dt>
+    <dd><%= athlet.surname %></dd>
+
+    <dt>Birthday</dt>
+    <dd><%= athlet.birthday %></dd>
+
+    <dt>Sex</dt>
+    <dd><%= athlet.sex %></dd>
+
+    <dt>Relaytm</dt>
+    <dd><%= athlet.relaytm %></dd>
+  </dl>
+<% end %>
+
+<%= link_to 'Edit', edit_multiple_athlets_path(:relaystarter => @athlets.first.relaystarter) %> |
+<%= link_to 'Back', athlets_path %>

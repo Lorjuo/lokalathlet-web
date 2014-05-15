@@ -1,4 +1,4 @@
-<h1>Edit Checked Products</h1>
+<h1>Edit Relay</h1>
 
 <%= form_tag update_multiple_athlets_path, method: :put, class: 'form-horizontal' do %>
   <div class="row">
@@ -60,6 +60,8 @@
               <%#= f.input :sex %>
 
               <%= f.input :sex, collection: [:M, :F] %>
+
+              <%= f.input :relaytmsize, :as => :hidden %>
             <% end %>
           </div>
         </div>

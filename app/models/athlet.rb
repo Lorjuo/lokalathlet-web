@@ -18,6 +18,11 @@
 
 class Athlet < ActiveRecord::Base
 
+
+  def self.allowed_attributes
+    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'event', 'relaytm', 'relaystarter', 'relaytmsize']
+  end
+
   require 'csv'
 
   # Validation
@@ -34,12 +39,20 @@ class Athlet < ActiveRecord::Base
   # http://stackoverflow.com/questions/2033069/convert-data-when-putting-them-into-a-database-using-active-record
   # http://openbook.galileocomputing.de/ruby_on_rails/ruby_on_rails_10_004.htm
   def birthday
-    self[:birthday] ? self[:birthday].year : 2000
+    self[:birthday] ? self[:birthday].year : nil
   end
 
   def birthday=(value)
     self[:birthday] = Date.new(value.to_i,1,1)
   end
+
+  # Virtual Attributes
+  
+  def name
+    "#{self.firstname} #{self.surname}"
+  end
+
+  # Export / Import
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
@@ -51,14 +64,13 @@ class Athlet < ActiveRecord::Base
   end
 
   def self.import(file)
-    allowed_attributes = ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'event', 'relaytm', 'relaystarter']
 
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       athlet = find_by_id(row["id"]) || new
-      athlet.attributes = row.to_hash.slice(*allowed_attributes)
+      athlet.attributes = row.to_hash.slice(*self.allowed_attributes)
       athlet.save! if athlet.valid?
     end
   end

@@ -5,8 +5,12 @@ Rails.application.routes.draw do
       get :autocomplete_surname
       get :autocomplete_club
       post :import
+
+      #get :new_multiple
+      get :show_multiple
       get :edit_multiple
       put :update_multiple
+      put :destroy_multiple
     end
   end
 
