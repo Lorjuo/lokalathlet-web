@@ -1,6 +1,8 @@
 <h1>Edit Relay</h1>
 
-<%= form_tag update_multiple_athlets_path, method: :put, class: 'form-horizontal' do %>
+<% new_record = @athlets.first.new_record? %>
+<%= form_tag new_record ? create_multiple_athlets_path : update_multiple_athlets_path,
+  method: new_record ? :post : :put, class: 'form-horizontal' do %>
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-primary">

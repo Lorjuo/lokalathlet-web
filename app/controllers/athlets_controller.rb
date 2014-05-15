@@ -55,12 +55,20 @@ class AthletsController < ApplicationController
   end
 
 
+  def new_multiple
+    @athlets = [];
+    3.times { @athlets << Athlet.new({:relaytmsize => 3}) }
+    render :form_multiple
+  end
+
+
   def edit
   end
 
 
   def edit_multiple
     @athlets = Athlet.where(:relaystarter => params[:relaystarter])
+    render :form_multiple
   end
 
 
@@ -75,6 +83,33 @@ class AthletsController < ApplicationController
   end
 
 
+  def create_multiple
+    athlets_attributes = params[:athlets] # make a temporary copy
+    @athlets = []
+    athlets_attributes.each do |value|
+      debugger
+      value[:starter] = params[:athlet][:starter]
+      value[:event] = params[:athlet][:event]
+      value[:club] = params[:athlet][:club]
+      
+      @athlets << Athlet.new(check_permission(value))
+    end
+
+    Athlet.transaction do
+      success = @athlets.map(&:save!)
+      if success.all?
+        #redirect_to show_multiple_athlets_path(:relaystarter => @athlet.relaystarter), notice: 'Relay was successfully updated.'
+        redirect_to athlets_url, notice: 'Relay was successfully updated.'
+      else
+        render :form_multiple
+        #errored = athlets.select{|b| !b.errors.blank?}
+        # do something with the errored values
+        #raise ActiveRecord::Rollback
+      end
+    end
+  end
+
+
   def update
     if @athlet.update(athlet_params)
       redirect_to @athlet, notice: 'Athlet was successfully updated.'
@@ -85,7 +120,8 @@ class AthletsController < ApplicationController
 
   def update_multiple
     athlets_attributes = params[:athlets] # make a temporary copy
-    athlets_attributes.each do |key, value|
+    #athlets_attributes.each do |key, value|
+    athlets_attributes.each do |value|
       value[:starter] = params[:athlet][:starter]
       value[:event] = params[:athlet][:event]
       value[:club] = params[:athlet][:club]
@@ -93,9 +129,9 @@ class AthletsController < ApplicationController
     @athlets = Athlet.update(athlets_attributes.keys, athlets_attributes.values)
     @athlets.reject! { |p| p.errors.empty? }
     if @athlets.empty?
-      redirect_to athlets_url
+      redirect_to athlets_url, notice: 'Relay was successfully updated.'
     else
-      render "edit_multiple"
+      render :form_multiple
     end
   end
 
@@ -122,5 +158,9 @@ class AthletsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def athlet_params
       params.require(:athlet).permit(:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter, :relaytmsize)
+    end
+
+    def check_permission(attributes)
+      attributes.permit(:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter, :relaytmsize)
     end
 end

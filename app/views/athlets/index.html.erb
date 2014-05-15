@@ -6,6 +6,7 @@ Download:
 <table class="table table-bordered table-striped datatable searchable">
   <thead>
     <tr>
+      <th>Starter</th>
       <th>Name</th>
       <th>Birthday</th>
       <th>Sex</th>
@@ -20,6 +21,7 @@ Download:
   <tbody>
     <% @athlets.each do |athlet| %>
       <tr>
+        <td><%= athlet.starter %></td>
         <td><%= link_to athlet.name, athlet %></td>
         <td><%= athlet.birthday %></td>
         <td><%= athlet.sex %></td>
@@ -56,8 +58,8 @@ Download:
   <tbody>
     <% @relays.each do |relay| %>
       <tr>
-        <td><%= link_to relay.relaystarter, show_multiple_athlets_path(:relaystarter => relay.relaystarter) %></td>
-        <td><%= relay.club %></td>
+        <td><%= relay.relaystarter %></td>
+        <td><%= link_to relay.club, show_multiple_athlets_path(:relaystarter => relay.relaystarter) %></td>
         <td><%= relay.event %></td>
         <td><%= relay.relaytm %></td>
         <td>

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
       #get :new_multiple
       get :show_multiple
+      get :new_multiple
       get :edit_multiple
+      post :create_multiple
       put :update_multiple
       put :destroy_multiple
     end
