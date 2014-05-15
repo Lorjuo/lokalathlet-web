@@ -11,14 +11,27 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //
-//= require jquery.ui.all
 //
 //= require bootstrap
 //# Bootstrap Javascript
 //= require autocomplete-rails-uncompressed
 //= require monkey_patch_autocomplete
+//# Loaders
+//= require tooltip_loader
+//
+//# Table
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap3
+//= require dataTables/jquery.dataTables.responsive
+//= require datatables
+//
+//# Underscore js
+//=require underscore
+//# at the moment needed for jquery dataTables responsive and gmaps4rails
+//
 // 
 //= require turbolinks
 // require_tree .

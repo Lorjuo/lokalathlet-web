@@ -4,15 +4,20 @@ class AthletsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def autocomplete_firstname
-    render :json => Athlet.where('firstname LIKE ?', "%#{params[:term]}%").order(:firstname).pluck(:firstname)
+    render :json => Athlet.where('firstname LIKE ?', "%#{params[:term]}%").order(:firstname).pluck(:firstname).uniq
   end
 
   def autocomplete_surname
-    render :json => Athlet.where('surname LIKE ?', "%#{params[:term]}%").order(:surname).pluck(:surname)
+    render :json => Athlet.where('surname LIKE ?', "%#{params[:term]}%").order(:surname).pluck(:surname).uniq
   end
 
   def autocomplete_club
-    render :json => Athlet.where('club LIKE ?', "%#{params[:term]}%").order(:club).pluck(:club)
+    render :json => Athlet.where('club LIKE ?', "%#{params[:term]}%").order(:club).pluck(:club).uniq
+  end
+
+  def import
+    Athlet.import(params[:file])
+    redirect_to(athlets_url, notice: "Athlets imported")
   end
 
   # GET /athlets

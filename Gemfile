@@ -40,6 +40,7 @@ gem 'mysql2'
 
 # Excel
 gem 'to_xls-rails'
+gem 'roo'
 
 # Forms
 gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
@@ -56,6 +57,13 @@ gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
 
 # JQuery
 gem 'jquery-ui-rails'
+
+# Table
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'lodash-rails'
+
+
+gem 'underscore-rails' # needed also for datatables
 
 group :development do
   gem 'hirb'

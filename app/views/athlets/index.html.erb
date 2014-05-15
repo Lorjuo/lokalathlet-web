@@ -1,6 +1,9 @@
 <h1>Listing athlets</h1>
+Download:
+  <%= link_to "CSV", athlets_path(format: "csv") %> |
+  <%= link_to "Excel", athlets_path(format: "xls") %>
 
-<table>
+<table class="table table-bordered table-striped datatable searchable">
   <thead>
     <tr>
       <th>Starter</th>
@@ -12,7 +15,9 @@
       <th>Event</th>
       <th>Relaytm</th>
       <th>Relaystarter</th>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -39,3 +44,10 @@
 <br>
 
 <%= link_to 'New Athlet', new_athlet_path %>
+
+<h2>Import Athlets</h2>
+
+<%= form_tag import_athlets_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>

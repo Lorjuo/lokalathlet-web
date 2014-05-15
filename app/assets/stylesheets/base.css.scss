@@ -1,9 +1,9 @@
 // Extern
 
 // Datatable
-//@import "dataTables/jquery.dataTables";
-//@import "dataTables/jquery.dataTables.bootstrap3";
-//@import "dataTables/jquery.dataTables.responsive";
+@import "dataTables/jquery.dataTables";
+@import "dataTables/jquery.dataTables.bootstrap3";
+@import "dataTables/jquery.dataTables.responsive";
 
 // Form
 /* Chosen */
@@ -27,3 +27,4 @@
 @import "typography";
 
 // Partials
+@import "partials/tooltips";

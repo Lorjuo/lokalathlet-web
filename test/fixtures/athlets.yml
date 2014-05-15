@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: athlets
+#
+#  id           :integer          not null, primary key
+#  starter      :integer
+#  firstname    :string(255)
+#  surname      :string(255)
+#  birthday     :date
+#  sex          :string(255)
+#  club         :string(255)
+#  event        :string(255)
+#  relaytm      :integer
+#  relaystarter :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
