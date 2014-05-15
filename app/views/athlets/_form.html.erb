@@ -15,10 +15,15 @@
 
   <div class="form-inputs">
     <%= f.input :starter %>
-    <%= f.input :firstname %>
+    <%= f.input :firstname, :input_html => {
+      :data => { :autocomplete => autocomplete_surname_athlets_path } }%>
+    <%#= f.input :firstname, :url => autocomplete_surname_athlets_path, :as => :autocomplete %>
+    <%#= f.input :firstname %>
     <%= f.input :surname %>
-    <%= f.input :birthday %>
-    <%= f.input :sex %>
+    <%= f.input :birthday, :as => :integer, :input_html => { :value => @athlet.birthday } %>
+    <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
+    <%#= f.input :sex %>
+    <%= f.input :sex, collection: [:M, :F] %>
     <%= f.input :club %>
     <%= f.input :event %>
     <%= f.input :relaytm %>
@@ -33,4 +38,18 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
 </div>

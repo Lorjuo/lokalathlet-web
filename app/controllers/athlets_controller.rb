@@ -1,5 +1,12 @@
 class AthletsController < ApplicationController
   before_action :set_athlet, only: [:show, :edit, :update, :destroy]
+  autocomplete :self, :surname, :full => true
+
+  def autocomplete_surname
+    term = params[:term]
+    surnames = Athlet.where('surname LIKE ?', "%#{term}%").order(:surname).pluck(:surname)
+    render :json => surnames
+  end
 
   # GET /athlets
   # GET /athlets.json

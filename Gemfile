@@ -35,6 +35,9 @@ gem 'quiet_assets' # Disable some warnings
 # Bootstrap
 gem 'bootstrap-sass'
 
+# Database
+gem 'mysql2'
+
 # Forms
 gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
 # http://blog.plataformatec.com.br/2014/04/bootstrap-3-support-for-simple-form/
@@ -45,6 +48,8 @@ gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
   gem 'chosen-rails'
   # For Rails 4 project, it is required to add compass-rails gem explicitly.
   gem 'compass-rails', github: 'Compass/compass-rails'
+
+  gem 'rails3-jquery-autocomplete'
 
 # JQuery
 gem 'jquery-ui-rails'
