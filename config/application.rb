@@ -1,6 +1,15 @@
 require File.expand_path('../boot', __FILE__)
 
+#http://blog.crowdint.com/2013/06/14/testing-rails-with-minitest.html
 require 'rails/all'
+
+# require "active_record/railtie"
+# require "action_controller/railtie"
+# require 'rake/testtask'
+# require "action_mailer/railtie"
+# #require "active_resource/railtie"
+# require "sprockets/railtie"
+# require "minitest/rails/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -19,5 +28,12 @@ module LokalathletWeb
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    
+    config.generators do |g|
+      g.test_framework :minitest, spec: true, fixture: false
+      g.helper false
+      g.assets false
+      g.view_specs false
+    end
   end
 end

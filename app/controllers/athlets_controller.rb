@@ -87,7 +87,6 @@ class AthletsController < ApplicationController
     athlets_attributes = params[:athlets] # make a temporary copy
     @athlets = []
     athlets_attributes.each do |value|
-      debugger
       value[:starter] = params[:athlet][:starter]
       value[:event] = params[:athlet][:event]
       value[:club] = params[:athlet][:club]
@@ -95,18 +94,20 @@ class AthletsController < ApplicationController
       @athlets << Athlet.new(check_permission(value))
     end
 
-    Athlet.transaction do
-      success = @athlets.map(&:save!)
-      if success.all?
-        #redirect_to show_multiple_athlets_path(:relaystarter => @athlet.relaystarter), notice: 'Relay was successfully updated.'
-        redirect_to athlets_url, notice: 'Relay was successfully updated.'
-      else
-        render :form_multiple
-        #errored = athlets.select{|b| !b.errors.blank?}
-        # do something with the errored values
-        #raise ActiveRecord::Rollback
+    begin
+      Athlet.transaction do
+        success = @athlets.map(&:save!)
       end
+    rescue ActiveRecord::RecordInvalid => invalid
+      render :form_multiple
+      return
     end
+    redirect_to athlets_url, notice: 'Relay was successfully updated.'
+    #http://ramblingabout.wordpress.com/2009/05/23/saving-different-active-record-classes-in-a-single-transaction/
+    #http://stackoverflow.com/questions/2567133/work-with-rescue-in-rails
+    #http://stackoverflow.com/questions/6326451/rails-3-transactions-rolling-back-everything
+    #http://stackoverflow.com/questions/2246036/rails-transaction-doesnt-rollback-on-validation-error
+    #http://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html
   end
 
 
@@ -120,8 +121,8 @@ class AthletsController < ApplicationController
 
   def update_multiple
     athlets_attributes = params[:athlets] # make a temporary copy
-    #athlets_attributes.each do |key, value|
-    athlets_attributes.each do |value|
+    athlets_attributes.each do |key, value|
+    #athlets_attributes.each do |value|
       value[:starter] = params[:athlet][:starter]
       value[:event] = params[:athlet][:event]
       value[:club] = params[:athlet][:club]

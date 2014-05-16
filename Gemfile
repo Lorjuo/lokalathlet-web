@@ -91,6 +91,11 @@ group :development do
   #gem 'sass-rails-source-maps'
 end
 
+group :test do
+  gem 'minitest-rails'
+  gem 'minitest-rails-capybara'
+end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
