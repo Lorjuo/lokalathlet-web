@@ -52,6 +52,10 @@ class Athlet < ActiveRecord::Base
     "#{self.firstname} #{self.surname}"
   end
 
+  def relay
+    Relay.find(relaystarter)
+  end
+
   # Export / Import
 
   def self.to_csv(options = {})

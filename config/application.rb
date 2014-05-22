@@ -35,5 +35,7 @@ module LokalathletWeb
       g.assets false
       g.view_specs false
     end
+
+    config.assets.precompile += %w( dark.css light.css )
   end
 end

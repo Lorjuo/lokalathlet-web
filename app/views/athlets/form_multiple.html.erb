@@ -1,5 +1,8 @@
 <h1>Edit Relay</h1>
 
+<div class="row">
+  <div class="col-xs-8">
+
 <% new_record = @athlets.first.new_record? %>
 <%= form_tag new_record ? create_multiple_athlets_path : update_multiple_athlets_path,
   method: new_record ? :post : :put, class: 'form-horizontal' do %>
@@ -11,6 +14,7 @@
           <%= simple_fields_for @athlets.first, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
             <div class="row">
               <div class="col-md-6">
+            <%= f.input :relaystarter %>
             <%= f.input :starter %>
             <%= f.input :club, :input_html => {
               :data => { :autocomplete => autocomplete_club_athlets_path } } %>
@@ -39,7 +43,7 @@
 
 
       <div class="col-md-6">
-        <div class="panel panel-info">
+        <div class="panel panel-info athlet">
           <div class="panel-heading">Athlet</div>
           <div class="panel-body">
             <%= simple_fields_for "athlets[]", athlet, wrapper: :horizontal_form do |f| %>
@@ -54,16 +58,16 @@
                 </div>
               <% end %>
               <%= f.input :firstname, :input_html => {
-                :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
+                :class => :firstname, :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
               <%= f.input :surname, :input_html => {
-                :data => { :autocomplete => autocomplete_surname_athlets_path } } %>
-              <%= f.input :birthday, :as => :integer, :input_html => { :value => athlet.birthday } %>
+                :class => :surname, :data => { :autocomplete => autocomplete_surname_athlets_path } } %>
+              <%= f.input :birthday, :as => :integer, :input_html => { :class => :birthday, :value => athlet.birthday } %>
               <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
               <%#= f.input :sex %>
 
-              <%= f.input :sex, collection: [:M, :F] %>
+              <%= f.input :sex, collection: [:M, :F], :input_html => { :class => :sex } %>
 
-              <%= f.input :relaytmsize, :as => :hidden %>
+              <%= f.input :relaytmsize, :input_html => { :class => :relaytmsize }, :as => :hidden %>
             <% end %>
           </div>
         </div>
@@ -74,3 +78,11 @@
     <%= submit_tag "Update" %>
   </div>
 <% end %>
+
+  </div>
+  <div class="col-xs-4">
+    <div class="affix-top" data-spy="affix" data-offset-top="160" data-offset-bottom="0">
+      <%= render :partial => 'athlet_suggestion', :collection => Athlet.limit(5), :as => 'athlet' %>
+    </div>
+  </div>
+</div>

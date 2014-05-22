@@ -16,6 +16,7 @@
 //
 //
 //= require bootstrap
+//= require affix
 //# Bootstrap Javascript
 //= require autocomplete-rails-uncompressed
 //= require monkey_patch_autocomplete
@@ -28,10 +29,16 @@
 //= require dataTables/jquery.dataTables.responsive
 //= require datatables
 //
+//= require jquery.animate-shadow
+//
+//# Template
+//= require tmpl
+//
 //# Underscore js
 //=require underscore
 //# at the moment needed for jquery dataTables responsive and gmaps4rails
 //
+//= require suggestion_box
 // 
 // require turbolinks
 // require_tree .

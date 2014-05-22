@@ -5,15 +5,15 @@ class AthletsController < ApplicationController
 
   # Autocompletion
   def autocomplete_firstname
-    render :json => Athlet.where('firstname LIKE ?', "%#{params[:term]}%").order(:firstname).pluck(:firstname).uniq
+    render :json => Athlet.where('firstname LIKE ?', "%#{params[:term]}%").limit(15).order(:firstname).pluck(:firstname).uniq
   end
 
   def autocomplete_surname
-    render :json => Athlet.where('surname LIKE ?', "%#{params[:term]}%").order(:surname).pluck(:surname).uniq
+    render :json => Athlet.where('surname LIKE ?', "%#{params[:term]}%").limit(15).order(:surname).pluck(:surname).uniq
   end
 
   def autocomplete_club
-    render :json => Athlet.where('club LIKE ?', "%#{params[:term]}%").order(:club).pluck(:club).uniq
+    render :json => Athlet.where('club LIKE ?', "%#{params[:term]}%").limit(15).order(:club).pluck(:club).uniq
   end
 
 
@@ -41,6 +41,14 @@ class AthletsController < ApplicationController
 
 
   def show
+  end
+
+  def suggestions
+    @athlets = Athlet.select("athlets.*, GROUP_CONCAT(athlets.event SEPARATOR ', ') AS events")
+    @athlets = @athlets.group("firstname, surname, sex, birthday").limit(5)
+    @athlets = @athlets.where("firstname LIKE (?)", "%#{params[:firstname]}%") if params[:firstname].present?
+    @athlets = @athlets.where("surname LIKE (?)", "%#{params[:surname]}%") if params[:surname].present?
+    # TODO: year and sex
   end
 
 
@@ -88,6 +96,7 @@ class AthletsController < ApplicationController
     @athlets = []
     athlets_attributes.each do |value|
       value[:starter] = params[:athlet][:starter]
+      value[:relaystarter] = params[:athlet][:relaystarter]
       value[:event] = params[:athlet][:event]
       value[:club] = params[:athlet][:club]
       

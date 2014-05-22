@@ -58,6 +58,9 @@ gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
 # JQuery
 gem 'jquery-ui-rails'
 
+# Profile
+#gem 'rack-mini-profiler'
+
 # Table
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'lodash-rails'
@@ -69,6 +72,8 @@ group :development do
   gem 'hirb'
 
   gem "bullet"
+
+  # gem 'cequel'
 
   # Annotations
   gem 'annotate'

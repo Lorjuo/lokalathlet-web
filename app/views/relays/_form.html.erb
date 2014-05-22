@@ -1,0 +1,44 @@
+<%= simple_form_for(@relay, html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  }) do |f| %>
+              <% if @relay.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@relay.errors.count, "error") %> prohibited this @relay from being saved:</h2>
+                  <ul>
+                  <% @relay.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Relay</div>
+        <div class="panel-body">
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :club, :input_html => {
+              :data => { :autocomplete => autocomplete_club_athlets_path } } %>
+            <%= f.input :event %>
+            <%= f.input :relaystarter %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= f.simple_fields_for :athlets do |athlet_form| %>
+      <%= render 'athlet_fields', f:athlet_form %>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

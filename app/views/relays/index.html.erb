@@ -1,0 +1,37 @@
+<h1>Listing relays</h1>
+
+<table class="table table-bordered table-striped datatable searchable">
+  <thead>
+    <tr>
+      <th>Relaystarter</th>
+      <th>Club</th>
+      <th>Event</th>
+      <th>Relaytmsize</th>
+      <th class="no-sort"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @relays.each do |relay| %>
+    <%# debugger %>
+      <tr>
+        <td><%= relay.relaystarter %></td>
+        <td><%= link_to relay.club, relay_path(:id => relay.relaystarter) %></td>
+        <td><%= relay.event %></td>
+        <td><%= relay.relaytmsize %></td>
+        <td>
+          <%= link_to edit_relay_path(:id => relay.relaystarter), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+            <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+          <% end %>
+          <%= link_to relay_path(:id => relay.relaystarter), :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+            <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Relay', new_relay_path %>

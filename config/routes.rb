@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get :autocomplete_surname
       get :autocomplete_club
       post :import
+      get :suggestions
 
       #get :new_multiple
       get :show_multiple
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
       put :destroy_multiple
     end
   end
+
+  resources :relays
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

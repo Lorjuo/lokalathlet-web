@@ -1,0 +1,36 @@
+<dl class="dl-horizontal">
+  <dt>Club</dt>
+  <dd><%= @relay.club %></dd>
+
+  <dt>Event</dt>
+  <dd><%= @relay.event %></dd>
+
+  <dt>Relaystarter</dt>
+  <dd><%= @relay.relaystarter %></dd>
+</dl>
+
+<% @relay.athlets.each do |athlet| %>
+
+  <dl class="dl-horizontal">
+    <dt>Starter</dt>
+    <dd><%= athlet.starter %></dd>
+
+    <dt>Firstname</dt>
+    <dd><%= athlet.firstname %></dd>
+
+    <dt>Surname</dt>
+    <dd><%= athlet.surname %></dd>
+
+    <dt>Birthday</dt>
+    <dd><%= athlet.birthday %></dd>
+
+    <dt>Sex</dt>
+    <dd><%= athlet.sex %></dd>
+
+    <dt>Relaytm</dt>
+    <dd><%= athlet.relaytm %></dd>
+  </dl>
+<% end %>
+
+<%= link_to 'Edit', edit_relay_path(:id => @relay.relaystarter) %> |
+<%= link_to 'Back', relays_path %>

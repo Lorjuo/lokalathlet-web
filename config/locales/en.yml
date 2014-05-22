@@ -44,3 +44,11 @@ en:
 
     summer: Summer
     winter: Winter
+
+  #http://stackoverflow.com/questions/22581490/rails-simple-form-association-with-i18n
+  simple_form:
+    options:
+      athlet:
+        sex:
+          M: 'Male'
+          F: 'Female'

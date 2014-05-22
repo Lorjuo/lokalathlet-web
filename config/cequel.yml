@@ -1,0 +1,19 @@
+development:
+  host: 'x220'
+  port: 9042
+  keyspace: lokalathlet_development
+
+test:
+  host: 'x220'
+  port: 9042
+  keyspace: lokalathlet_test
+
+production:
+  hosts:
+    # - 'cass1.lokalathlet_web.biz'
+    # - 'cass2.lokalathlet_web.biz'
+    # - 'cass3.lokalathlet_web.biz'
+  port: 9042
+  keyspace: lokalathlet_production
+  username: 'myappuser'
+  password: 'password1'
