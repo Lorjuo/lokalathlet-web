@@ -2,3 +2,29 @@
 
 // Partials
 @import "partials/datatables";
+
+header {
+  margin: 40px 0px;
+}
+
+.virtual-panel-right {
+  margin-left: 15px;
+}
+.virtual-panel-left {
+  margin-right: 15px;
+}
+.badge.badge-primary {
+  background-color: $brand-primary;
+}
+.badge.badge-success {
+  background-color: $brand-success;
+}
+.badge.badge-info {
+  background-color: $brand-info;
+}
+.badge.badge-warning {
+  background-color: $brand-warning;
+}
+.badge.badge-danger {
+  background-color: $brand-danger;
+}

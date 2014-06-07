@@ -1,4 +1,7 @@
-<h1>Edit Relay</h1>
+<!-- <h3>Edit Relay</h3> -->
+<div class="page-header">
+  <h1 id="navbar">Staffel bearbeiten</h1>
+</div>
 
 <div class="row">
   <div class="col-xs-8">
@@ -9,24 +12,32 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-primary">
-        <div class="panel-heading">Relay</div>
+        <div class="panel-heading">
+          <%= fa_icon "users" %>
+          Relay
+        </div>
         <div class="panel-body">
           <%= simple_fields_for @athlets.first, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
             <div class="row">
               <div class="col-md-6">
-            <%= f.input :relaystarter %>
-            <%= f.input :starter %>
-            <%= f.input :club, :input_html => {
-              :data => { :autocomplete => autocomplete_club_athlets_path } } %>
-        </div>
+                <div class="virtual-panel-left">
+                  <%= f.input :relaystarter %>
+                  <%= f.input :starter %>
+                  <%= f.input :club, :input_html => {
+                    :data => { :autocomplete => autocomplete_club_athlets_path } } %>
+                </div>
+              </div>
               <div class="col-md-6">
-            <%= f.input :event %>
-          </div>
-        </div>
+                <div class="virtual-panel-right">
+                  <%= f.input :event %>
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
     </div>
+    <% count = 0 %>
     <% @athlets.each do |athlet| %>
 
       <% if false %><!-- Errors -->
@@ -44,30 +55,36 @@
 
       <div class="col-md-6">
         <div class="panel panel-info athlet">
-          <div class="panel-heading">Athlet</div>
+          <!-- <div class="panel-heading">Athlet</div> -->
           <div class="panel-body">
             <%= simple_fields_for "athlets[]", athlet, wrapper: :horizontal_form do |f| %>
-              <% if athlet.errors.any? %>
-                <div id="error_explanation">
-                  <h2><%= pluralize(athlet.errors.count, "error") %> prohibited this athlet from being saved:</h2>
-                  <ul>
-                  <% athlet.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                  <% end %>
-                  </ul>
-                </div>
-              <% end %>
-              <%= f.input :firstname, :input_html => {
-                :class => :firstname, :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
-              <%= f.input :surname, :input_html => {
-                :class => :surname, :data => { :autocomplete => autocomplete_surname_athlets_path } } %>
-              <%= f.input :birthday, :as => :integer, :input_html => { :class => :birthday, :value => athlet.birthday } %>
-              <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
-              <%#= f.input :sex %>
+              <fieldset>
+                <legend>
+                  <%#= fa_icon "users" %>
+                  Athlet <%= (count += 1) %>
+                </legend>
+                <% if athlet.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(athlet.errors.count, "error") %> prohibited this athlet from being saved:</h2>
+                    <ul>
+                    <% athlet.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                <%= f.input :firstname, :input_html => {
+                  :class => :firstname, :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
+                <%= f.input :surname, :input_html => {
+                  :class => :surname, :data => { :autocomplete => autocomplete_surname_athlets_path } } %>
+                <%= f.input :birthday, :as => :integer, :input_html => { :class => :birthday, :value => athlet.birthday } %>
+                <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
+                <%#= f.input :sex %>
 
-              <%= f.input :sex, collection: [:M, :F], :input_html => { :class => :sex } %>
+                <%= f.input :sex, collection: [:M, :F], :input_html => { :class => :sex } %>
 
-              <%= f.input :relaytmsize, :input_html => { :class => :relaytmsize }, :as => :hidden %>
+                <%= f.input :relaytmsize, :input_html => { :class => :relaytmsize }, :as => :hidden %>
+              </fieldset>
             <% end %>
           </div>
         </div>
@@ -75,14 +92,20 @@
     <% end %>
   </div>
   <div class="actions">
-    <%= submit_tag "Update" %>
+    <%= submit_tag "Update", :class => "btn btn-primary" %>
   </div>
 <% end %>
 
   </div>
   <div class="col-xs-4">
-    <div class="affix-top" data-spy="affix" data-offset-top="160" data-offset-bottom="0">
-      <%= render :partial => 'athlet_suggestion', :collection => Athlet.limit(5), :as => 'athlet' %>
+    <div id="suggestionBar" class="affix-top" data-spy="affix" data-offset-top="160" data-offset-bottom="0">
+      <div class="panel panel-primary athlet">
+        <div class="panel-heading">
+          <%= fa_icon 'refresh' %>
+          Suggestions
+        </div>
+      </div>
+      <div id="suggestionBox"></div>
     </div>
   </div>
 </div>

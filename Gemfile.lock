@@ -71,6 +71,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cequel (1.2.5)
+      activemodel (>= 3.1, < 5.0)
+      cql-rb (~> 1.2)
     chosen-rails (1.1.0)
       coffee-rails (>= 3.2)
       compass-rails (>= 1.1.2)
@@ -90,6 +93,7 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.2.19)
+    cql-rb (1.2.2)
     daemons (1.1.9)
     debug_inspector (0.0.2)
     debugger (1.6.6)
@@ -101,6 +105,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+    font-awesome-rails (4.0.3.1)
+      railties (>= 3.2, < 5.0)
     fssm (0.2.10)
     hike (1.2.3)
     hirb (0.7.1)
@@ -227,10 +233,12 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   bullet
+  cequel
   chosen-rails
   coffee-rails (~> 4.0.0)
   compass-rails!
   debugger
+  font-awesome-rails
   hirb
   jbuilder (~> 2.0)
   jquery-datatables-rails!

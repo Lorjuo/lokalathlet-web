@@ -55,6 +55,9 @@ gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
 
   gem 'rails3-jquery-autocomplete'
 
+# Icons
+gem "font-awesome-rails"
+
 # JQuery
 gem 'jquery-ui-rails'
 
@@ -73,7 +76,7 @@ group :development do
 
   gem "bullet"
 
-  # gem 'cequel'
+  gem 'cequel'
 
   # Annotations
   gem 'annotate'

@@ -204,21 +204,30 @@ $(document).ready(function() {
 function Observable(el, observer) {
     var observable = this;
 
+    var timer;
+    var delay = 350; // 0.3 seconds delay after last input
+
     this.init = function() {
         el.bind("click", function() {
             observer.changeFocus(observable)
         });
         el.find(".firstname").bind("change paste keyup", function() {
-            observer.updateParams(observable)
+            // observer.updateParams(observable)
+            // http://www.webdevdoor.com/jquery/javascript-delay-input-field-change/
+            window.clearTimeout(timer);
+            timer = window.setTimeout(function() {
+                //insert delayed input change action/event here
+                observer.updateParams(observable)
+            }, delay);
         });
         el.find(".surname").bind("change paste keyup", function() {
-            observer.updateParams(observable)
-        });
-        el.find(".sex").bind("change paste keyup", function() {
-            observer.updateParams(observable)
-        });
-        el.find(".birthday").bind("change paste keyup", function() {
-            observer.updateParams(observable)
+            // observer.updateParams(observable)
+            // http://www.webdevdoor.com/jquery/javascript-delay-input-field-change/
+            window.clearTimeout(timer);
+            timer = window.setTimeout(function() {
+                //insert delayed input change action/event here
+                observer.updateParams(observable)
+            }, delay);
         });
     }
 
