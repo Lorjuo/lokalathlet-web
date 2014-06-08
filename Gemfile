@@ -76,7 +76,7 @@ group :development do
 
   gem "bullet"
 
-  gem 'cequel'
+  # gem 'cequel'
 
   # Annotations
   gem 'annotate'
