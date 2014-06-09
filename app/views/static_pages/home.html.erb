@@ -23,56 +23,93 @@
 
 <div class="row">
   <div class="col-md-4">
-    <div class="panel panel-primary">
+    <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Einzelstarter</h3>
       </div>
       <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
+        <% Event.where(:team_size => 1).each do |event| %>
           <li>
             <a href="/athlets">
-              Kinder
-              <span class="badge badge-primary pull-right">14</span>
+              <%= event.name %>
+              <span class="badge badge-info pull-right">
+                <%= Athlet.where(:event => event.name).distinct.count %>
+              </span>
             </a>
           </li>
-          <li>
-            <a href="/athlets">
-              Jugendliche
-              <span class="badge badge-primary pull-right">14</span>
-            </a>
-          </li>
-          </li>
-          <li>
-            <a href="/athlets">
-              Erwachsene
-              <span class="badge badge-primary pull-right">14</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+        <% end %>
+      </ul>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="panel panel-success">
-      <div class="panel-heading">
-        <h3 class="panel-title">Staffeln</h3>
-      </div>
-      <div class="panel-body">
-        <ul class="nav nav-pills nav-stacked">
+</div>
+<div class="col-md-4">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Staffeln</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="nav nav-pills nav-stacked">
+        <% Event.where.not(:team_size => 1).each do |event| %>
           <li>
             <a href="/relays">
-              Originelle Staffeln
-              <span class="badge badge-success pull-right">14</span>
+              <%= event.name %>
+              <span class="badge badge-success pull-right">
+                <%= Athlet.where(:event => event.name).distinct.count(:relaystarter) %>
+              </span>
             </a>
           </li>
-          <li>
-            <a href="/relays">
-              Schnelle Staffeln
-              <span class="badge badge-success pull-right">14</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+        <% end %>
+      </ul>
     </div>
   </div>
+</div>
+
+<div class="col-md-4">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Export</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="nav nav-pills nav-stacked">
+        <li>
+          <%= link_to athlets_path(format: "csv") do %>
+          <%= fa_icon 'download' %> CSV
+          <% end %>
+        </li>
+        <li>
+          <%= link_to athlets_path(format: "xls") do %>
+          <%= fa_icon 'download' %> Excel
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Import</h3>
+    </div>
+    <div class="panel-body">
+      <%= form_tag import_athlets_path, multipart: true do %>
+      <!-- <span class="btn btn-primary btn-file">
+        Durchsuchen <%= file_field_tag :file %>
+      </span> -->
+      <div class="input-group">
+        <span class="input-group-btn">
+          <span class="btn btn-default btn-file">
+            <%= fa_icon 'search' %>
+            Durchsuchen <%= file_field_tag :file %>
+          </span>
+        </span>
+        <input type="text" class="form-control" readonly="">
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary pull-right">
+        <%= fa_icon 'upload' %>
+        Upload
+      </button>
+      <% end %>
+    </div>
+  </div>
+</div>
 </div>

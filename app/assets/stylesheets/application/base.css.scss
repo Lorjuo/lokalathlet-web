@@ -28,5 +28,10 @@
 
 // Partials
 @import "partials/datatables";
+@import "partials/fileupload_button";
 @import "partials/suggestion_box";
 @import "partials/tooltips";
+
+.section {
+  margin-top: 10em;
+}

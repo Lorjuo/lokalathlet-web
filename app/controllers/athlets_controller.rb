@@ -25,13 +25,14 @@ class AthletsController < ApplicationController
 
 
   def index
-    @athlets = Athlet.where(:relaytmsize => 1).all
-    @relays = Athlet.where.not(:relaytmsize => 1).group(:relaystarter)
+    @athlets = Athlet.all
+    #@athlets = Athlet.where(:relaytmsize => 1).all
+    #@relays = Athlet.where.not(:relaytmsize => 1).group(:relaystarter)
 
     respond_to do |format|
       format.html
-      format.csv { send_data @relays.to_csv }
-      format.xls { send_data @relays.to_xls(
+      format.csv { send_data @athlets.to_csv }
+      format.xls { send_data @athlets.to_xls(
         #:except => [:created_at, :updated_at]
         :columns => Athlet::allowed_attributes,
         :headers => Athlet::allowed_attributes
@@ -58,7 +59,7 @@ class AthletsController < ApplicationController
 
 
   def new
-    @athlet = Athlet.new
+    @athlet = Athlet.new(:event => params[:event])
     @athlet.relaytmsize = 1
   end
 

@@ -8,7 +8,7 @@
 json.set! :athlets do
   @athlets.each do |athlet|
     json.set! athlet.id do
-      json.(athlet, :id, :firstname, :surname, :sex, :events, :birthday)
+      json.(athlet, :id, :firstname, :surname, :sex, :events, :birthday, :club)
     end
   end
 end

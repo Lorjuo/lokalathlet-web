@@ -20,6 +20,7 @@
 //# Bootstrap Javascript
 //= require autocomplete-rails-uncompressed
 //= require monkey_patch_autocomplete
+//= require fileupload_button
 //# Loaders
 //= require tooltip_loader
 //

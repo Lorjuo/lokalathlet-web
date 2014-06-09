@@ -1,10 +1,10 @@
-<h1>Listing events</h1>
+<h1>Eventübersicht</h1>
 
-<table>
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Team size</th>
+      <th>Teamgröße</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,9 +14,9 @@
       <tr>
         <td><%= event.name %></td>
         <td><%= event.team_size %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Details', event %></td>
+        <td><%= link_to 'Bearbeiten', edit_event_path(event) %></td>
+        <td><%= link_to 'Löschen', event, method: :delete, data: { confirm: 'Sind sie sich sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'Neue Veranstaltung', new_event_path %>

@@ -47,6 +47,10 @@ class Relay < Tableless
     athlets.map{ |athlet| Relay.new(athlet.attributes.slice(*Relay.allowed_attributes).merge({:new_record => false})) }
   end
 
+  def self.event(name)
+    athlets = Athlet.where(:event => name).group(:relaystarter).all
+    athlets.map{ |athlet| Relay.new(athlet.attributes.slice(*Relay.allowed_attributes).merge({:new_record => false})) }
+  end
 
   def to_param
     self.relaystarter

@@ -26,6 +26,7 @@
                 "<div class='name'>{%=o.firstname%} {%=o.surname%}</div>" +
                 "<div class='sex'>{%=o.sex%}</div>" +
                 "<div class='birthday'>{%=o.birthday%}</div>" +
+            "<div class='club'>{%=o.club%}</div>" +
                 "<div class='events'>{%=o.events%}</div>" +
                 "</div>",
 
@@ -245,6 +246,7 @@ function Observable(el, observer) {
         el.find(".surname").val(athlet['surname']);
         el.find(".sex").val(athlet['sex']);
         el.find(".birthday").val(athlet['birthday']);
+        el.find(".club").val(athlet['club']);
         el.switchClass(null, "blink", 500, "easeInOutQuad")
             .switchClass("blink", null, 500, "easeInOutQuad");
     }

@@ -4,17 +4,17 @@ class RelaysController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def index
-    @relays = Relay.all
+    # @relays = Relay.all
 
-    respond_to do |format|
-      format.html
-      format.csv { send_data @relays.to_csv }
-      format.xls { send_data @relays.to_xls(
-        #:except => [:created_at, :updated_at]
-        :columns => Relay::allowed_attributes,
-        :headers => Relay::allowed_attributes
-      ) }
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.csv { send_data @relays.to_csv }
+    #   format.xls { send_data @relays.to_xls(
+    #     #:except => [:created_at, :updated_at]
+    #     :columns => Relay::allowed_attributes,
+    #     :headers => Relay::allowed_attributes
+    #   ) }
+    # end
   end
 
 
@@ -23,7 +23,8 @@ class RelaysController < ApplicationController
 
 
   def new
-    @relay = Relay.new
+    event = Event.where(:name => params[:event]).first
+    @relay = Relay.new(:relaytmsize => event.team_size, :event => event.name)
   end
 
 

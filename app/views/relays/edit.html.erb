@@ -1,6 +1,8 @@
-<h1>Editing relay</h1>
+<div class="page-header">
+  <h1 id="navbar">Staffel bearbeiten</h1>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', relay_path(:id => @relay.relaystarter) %> |
-<%= link_to 'Back', relays_path %>
+<%= link_to 'Details', relay_path(:id => @relay.relaystarter) %> |
+<%= link_to 'Zurück', relays_path %>

@@ -1,18 +1,48 @@
+<% athlet = f.object %>
+
+<% if false %><!-- Errors -->
+  <li>
+    <%= hidden_field_tag "athlet_ids[]", athlet.id %>
+    <%= athlet.surname %>
+    <ul class="errors">
+      <% athlet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+
+
 <div class="col-md-6">
-  <div class="panel panel-info">
-    <div class="panel-heading">Athlet</div>
+  <div class="panel panel-default athlet">
     <div class="panel-body">
-      <%= f.input :firstname, :input_html => {
-        :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
-      <%= f.input :surname, :input_html => {
-        :data => { :autocomplete => autocomplete_surname_athlets_path } } %>
-      <%= f.input :birthday, :as => :integer, :input_html => { :value => f.object.birthday } %>
-      <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
-      <%#= f.input :sex %>
+      <fieldset>
+        <legend>
+          <%#= fa_icon "users" %>
+          Athlet
+        </legend>
+        <% if athlet.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(athlet.errors.count, "error") %> prohibited this athlet from being saved:</h2>
+            <ul>
+            <% athlet.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= f.input :firstname, :input_html => {
+          :class => :firstname, :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
+        <%= f.input :surname, :input_html => {
+          :class => :surname, :data => { :autocomplete => autocomplete_surname_athlets_path } } %>
+        <%= f.input :birthday, :as => :integer, :input_html => { :class => :birthday, :value => athlet.birthday } %>
+        <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
+        <%#= f.input :sex %>
 
-      <%= f.input :sex, collection: [:M, :F] %>
+        <%= f.input :sex, collection: [:M, :F], :input_html => { :class => :sex } %>
 
-      <%= f.input :relaytmsize, :as => :hidden %>
+        <%= f.input :relaytmsize, :input_html => { :class => :relaytmsize }, :as => :hidden %>
+      </fieldset>
     </div>
   </div>
 </div>

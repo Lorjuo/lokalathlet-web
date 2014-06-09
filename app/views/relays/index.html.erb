@@ -1,37 +1,48 @@
-<h1>Listing relays</h1>
+<div class="page-header">
+  <h1>Staffeln</h1>
+</div>
 
-<table class="table table-bordered table-striped datatable searchable">
-  <thead>
-    <tr>
-      <th>Relaystarter</th>
-      <th>Club</th>
-      <th>Event</th>
-      <th>Relaytmsize</th>
-      <th class="no-sort"></th>
-    </tr>
-  </thead>
+<% Event.where.not(:team_size => 1).each do |event| %>
+  <div class="section">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <%= event.name %>
+        </div>
+      </div>
+    </div>
 
-  <tbody>
-    <% @relays.each do |relay| %>
-    <%# debugger %>
-      <tr>
-        <td><%= relay.relaystarter %></td>
-        <td><%= link_to relay.club, relay_path(:id => relay.relaystarter) %></td>
-        <td><%= relay.event %></td>
-        <td><%= relay.relaytmsize %></td>
-        <td>
-          <%= link_to edit_relay_path(:id => relay.relaystarter), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
-            <%= tag :span, :class => "glyphicon glyphicon-edit" %>
-          <% end %>
-          <%= link_to relay_path(:id => relay.relaystarter), :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
-            <%= tag :span, :class => "glyphicon glyphicon-trash" %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="table table-bordered table-striped datatable searchable">
+      <thead>
+        <tr>
+          <th>Teamnummer</th>
+          <th>Verein</th>
+          <th>Veranstaltung</th>
+          <th>Teamgröße</th>
+          <th class="no-sort"></th>
+        </tr>
+      </thead>
 
-<br>
-
-<%= link_to 'New Relay', new_relay_path %>
+      <tbody>
+        <% Relay.event(event.name).each do |relay| %>
+        <%# debugger %>
+          <tr>
+            <td><%= relay.relaystarter %></td>
+            <td><%= link_to relay.club, relay_path(:id => relay.relaystarter) %></td>
+            <td><%= relay.event %></td>
+            <td><%= relay.relaytmsize %></td>
+            <td>
+              <%= link_to edit_relay_path(:id => relay.relaystarter), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+                <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+              <% end %>
+              <%= link_to relay_path(:id => relay.relaystarter), :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'Neues Team anmelden', new_relay_path(:event => event.name), :class => 'btn btn-default' %>
+  </div>
+<% end %>

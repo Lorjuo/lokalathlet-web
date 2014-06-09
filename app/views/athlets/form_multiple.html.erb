@@ -9,7 +9,7 @@
 <% new_record = @athlets.first.new_record? %>
 <%= form_tag new_record ? create_multiple_athlets_path : update_multiple_athlets_path,
   method: new_record ? :post : :put, class: 'form-horizontal' do %>
-  <div class="row">
+  <div class="row relay">
     <div class="col-md-12">
       <div class="panel panel-primary">
         <div class="panel-heading">
@@ -102,7 +102,7 @@
       <div class="panel panel-primary athlet">
         <div class="panel-heading">
           <%= fa_icon 'refresh' %>
-          Suggestions
+          Vorschläge
         </div>
       </div>
       <div id="suggestionBox"></div>

@@ -1,0 +1,14 @@
+de:
+  time:
+    formats:
+      time: ! '%H:%M Uhr'
+      time_short: ! '%H:%M'
+      datetime_short: ! '%a, %e. %b, %H:%M Uhr'
+      short_full: ! '%e. %B %Y, %H:%M Uhr'
+  date:
+    formats:
+      year_month: ! '%B %Y'
+      month_day: ! '%-d.%-m.'
+  number:    
+    ordinals:
+      other: "%d."

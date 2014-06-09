@@ -92,6 +92,8 @@ group :development do
   # Error Handling
   gem 'better_errors'
   gem 'binding_of_caller'
+  # gem "rails-i18n-debug"
+
 
   # Source maps
   # http://blog.vhyza.eu/blog/2013/09/22/debugging-rails-4-coffeescript-and-sass-source-files-in-google-chrome/

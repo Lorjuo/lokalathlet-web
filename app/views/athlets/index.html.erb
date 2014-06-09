@@ -1,87 +1,57 @@
-<h1>Listing athlets</h1>
-Download:
-  <%= link_to "CSV", athlets_path(format: "csv") %> |
-  <%= link_to "Excel", athlets_path(format: "xls") %>
+<div class="page-header">
+  <h1>Einzelstarter</h1>
+</div>
 
-<table class="table table-bordered table-striped datatable searchable">
-  <thead>
-    <tr>
-      <th>Starter</th>
-      <th>Name</th>
-      <th>Birthday</th>
-      <th>Sex</th>
-      <th>Club</th>
-      <th>Event</th>
-      <th>Relaytm</th>
-      <th>Relaystarter</th>
-      <th class="no-sort"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @athlets.each do |athlet| %>
-      <tr>
-        <td><%= athlet.starter %></td>
-        <td><%= link_to athlet.name, athlet %></td>
-        <td><%= athlet.birthday %></td>
-        <td><%= athlet.sex %></td>
-        <td><%= athlet.club %></td>
-        <td><%= athlet.event %></td>
-        <td><%= athlet.relaytm %></td>
-        <td><%= athlet.relaystarter %></td>
-        <td>
-          <%= link_to edit_athlet_path(athlet), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
-            <%= tag :span, :class => "glyphicon glyphicon-edit" %>
-          <% end %>
-          <%= link_to athlet, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
-            <%= tag :span, :class => "glyphicon glyphicon-trash" %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% Event.where(:team_size => 1).each do |event| %>
+  <div class="section">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <%= event.name %>
+        </div>
+      </div>
+    </div>
 
-<h1>Listing relays</h1>
+    <table class="table table-bordered table-striped datatable searchable">
+      <thead>
+        <tr>
+          <th>Starter</th>
+          <th>Name</th>
+          <th>Birthday</th>
+          <th>Sex</th>
+          <th>Club</th>
+          <th>Event</th>
+          <th>Relaytm</th>
+          <th>Relaystarter</th>
+          <th class="no-sort"></th>
+        </tr>
+      </thead>
 
-<table class="table table-bordered table-striped datatable searchable">
-  <thead>
-    <tr>
-      <th>Relaystarter</th>
-      <th>Club</th>
-      <th>Event</th>
-      <th>Relaytm</th>
-      <th class="no-sort"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @athlets.where(:event => event.name).each do |athlet| %>
+          <tr>
+            <td><%= athlet.starter %></td>
+            <td><%= link_to athlet.name, athlet %></td>
+            <td><%= athlet.birthday %></td>
+            <td><%= athlet.sex %></td>
+            <td><%= athlet.club %></td>
+            <td><%= athlet.event %></td>
+            <td><%= athlet.relaytm %></td>
+            <td><%= athlet.relaystarter %></td>
+            <td>
+              <%= link_to edit_athlet_path(athlet), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+                <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+              <% end %>
+              <%= link_to athlet, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <tbody>
-    <% @relays.each do |relay| %>
-      <tr>
-        <td><%= relay.relaystarter %></td>
-        <td><%= link_to relay.club, show_multiple_athlets_path(:relaystarter => relay.relaystarter) %></td>
-        <td><%= relay.event %></td>
-        <td><%= relay.relaytm %></td>
-        <td>
-          <%= link_to edit_multiple_athlets_path(:relaystarter => relay.relaystarter), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
-            <%= tag :span, :class => "glyphicon glyphicon-edit" %>
-          <% end %>
-          <%= link_to destroy_multiple_athlets_path(:relay => relay.relaystarter), :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
-            <%= tag :span, :class => "glyphicon glyphicon-trash" %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Athlet', new_athlet_path %>
-
-<h2>Import Athlets</h2>
-
-<%= form_tag import_athlets_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
+    <%= link_to 'Neuen Athleten anmelden', new_athlet_path(:event => event.name), :class => 'btn btn-default' %>
+  </div>
 <% end %>

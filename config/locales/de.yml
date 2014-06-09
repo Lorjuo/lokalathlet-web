@@ -45,6 +45,23 @@ de:
     summer: Sommer
     winter: Winter
 
+  attributes:
+    team_size: Teamgröße
+    starter: Startnummer
+    firstname: Vorname
+    surname: Nachname
+    birthday: Geburtsjahr
+    sex: Geschlecht
+    club: Verein
+    relaystarter: Teamstartnummer
+    event: Veranstaltung
+
+  activerecord:
+    models:
+      event:
+        one: Veranstaltung
+        other: Veranstaltungen
+
   #http://stackoverflow.com/questions/22581490/rails-simple-form-association-with-i18n
   simple_form:
     options:

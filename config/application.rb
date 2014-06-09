@@ -37,5 +37,6 @@ module LokalathletWeb
     end
 
     config.assets.precompile += %w( dark.css light.css )
+    config.i18n.default_locale = :de
   end
 end
