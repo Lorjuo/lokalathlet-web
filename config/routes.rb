@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get :autocomplete_club
       post :import
       get :suggestions
+      delete :destroy_all
 
       #get :new_multiple
       get :show_multiple
@@ -19,7 +20,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :relays
+  resources :relays do
+    collection do
+      delete :destroy_all
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

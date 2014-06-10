@@ -39,7 +39,11 @@
             </a>
           </li>
         <% end %>
-      </ul>
+      </ul><br />
+      <%= link_to destroy_all_athlets_path, :class => 'btn btn-info pull-right', method: :delete do %>
+        <%= fa_icon 'trash-o' %>
+        Alle Einzelläufer löschen
+      <% end %>
     </div>
   </div>
 </div>
@@ -60,7 +64,11 @@
             </a>
           </li>
         <% end %>
-      </ul>
+      </ul><br />
+      <%= link_to destroy_all_relays_path, :class => 'btn btn-success pull-right', method: :delete do %>
+        <%= fa_icon 'trash-o' %>
+        Alle Staffeln löschen
+      <% end %>
     </div>
   </div>
 </div>

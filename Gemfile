@@ -41,6 +41,7 @@ gem 'mysql2'
 # Excel
 gem 'to_xls-rails'
 gem 'roo'
+# gem 'writeexcel'
 
 # Forms
 gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'

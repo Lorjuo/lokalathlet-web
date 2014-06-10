@@ -24,6 +24,7 @@ class Athlet < ActiveRecord::Base
   end
 
   require 'csv'
+  require 'to_xls-rails'
 
   # Validation
   validates :starter, :presence => true, :inclusion => 0..2000 # TODO: restrict this
@@ -76,8 +77,41 @@ class Athlet < ActiveRecord::Base
       athlet = find_by_id(row["id"]) || new
       athlet.attributes = row.to_hash.slice(*self.allowed_attributes)
       athlet.save! if athlet.valid?
+
+      # Add event
+      # http://stackoverflow.com/questions/18082778/rails-checking-if-a-record-exists-in-database
+      if Event.where(:name => athlet.event).blank?
+        Event.new(:name => athlet.event, :team_size => athlet.relaytmsize)
+      end
     end
   end
+
+  # def self.to_xls
+  #   require 'writeexcel'
+
+  #   # Create a new Excel Workbook
+  #   workbook = WriteExcel.new('ruby.xls')
+
+  #   # Add worksheet(s)
+  #   worksheet  = workbook.add_worksheet
+
+  #   k = 0 # column index
+  #   self.allowed_attributes.each do |attribute|
+  #     worksheet.write(0, k, attribute)
+  #   end
+
+  #   j = 1;
+  #   all.each do |athlet|
+  #     k = 0;
+  #     self.allowed_attributes.each do |attribute|
+  #       # http://stackoverflow.com/questions/11808949/get-attribute-of-activerecord-object-by-string
+  #       worksheet.write(j, k, athlet[attribute])
+  #     end
+  #   end
+
+  #   # write to file
+  #   workbook.close
+  # end
 
   def self.open_spreadsheet(file)
     case File.extname(file.original_filename)

@@ -58,6 +58,13 @@ class RelaysController < ApplicationController
   end
 
 
+  def destroy_all
+    @athlets = Athlet.where.not(:relaytmsize => 1)
+    @athlets.destroy_all
+    redirect_to root_url, notice: 'Relays were successfully destroyed.'
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_relay

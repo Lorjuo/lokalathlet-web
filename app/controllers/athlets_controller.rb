@@ -32,10 +32,15 @@ class AthletsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @athlets.to_csv }
+      #format.xls { send_data @athlets.to_xls }
+
+      # gem 'to_xls-rails'
       format.xls { send_data @athlets.to_xls(
         #:except => [:created_at, :updated_at]
-        :columns => Athlet::allowed_attributes,
-        :headers => Athlet::allowed_attributes
+        :only => Athlet::allowed_attributes.map { |x| x.to_sym },
+        :header => true,
+        :header_columns => Athlet::allowed_attributes,
+        #:prepend => [["Col 0, Row 0", "Col 1, Row 0"], ["Col 0, Row 1"]]
       ) }
     end
   end
@@ -157,6 +162,13 @@ class AthletsController < ApplicationController
     @athlets = Athlet.where(:relaystarter => params[:relaystarter])
     @athlets.destroy_all
     redirect_to athlets_url, notice: 'Relay was successfully destroyed.'
+  end
+
+
+  def destroy_all
+    @athlets = Athlet.where(:relaytmsize => 1)
+    @athlets.destroy_all
+    redirect_to root_url, notice: 'Athlets were successfully destroyed.'
   end
 
 
