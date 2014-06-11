@@ -80,8 +80,8 @@ class Athlet < ActiveRecord::Base
 
       # Add event
       # http://stackoverflow.com/questions/18082778/rails-checking-if-a-record-exists-in-database
-      if Event.where(:name => athlet.event).blank?
-        Event.new(:name => athlet.event, :team_size => athlet.relaytmsize)
+      if athlet.event.present? && Event.where(:name => athlet.event).blank?
+        Event.create(:name => athlet.event, :team_size => athlet.relaytmsize)
       end
     end
   end

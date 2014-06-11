@@ -20,7 +20,7 @@ class AthletsController < ApplicationController
   # Actions
   def import
     Athlet.import(params[:file])
-    redirect_to(athlets_url, notice: "Athlets imported")
+    redirect_to(root_url, notice: "Athlets imported")
   end
 
 
