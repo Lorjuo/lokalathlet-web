@@ -88,7 +88,7 @@ group :development do
   
   # gem "rails-i18n-debug"
   
-  gem 'thin'
+  #gem 'thin'
 
   # Error Handling
   gem 'better_errors'

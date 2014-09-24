@@ -57,7 +57,7 @@ class Relay < Tableless
   end
 
   def set_defaults
-    self.relaytmsize ||= 3
+    self.relaytmsize ||= 4
   end
 
   def build_athlets
@@ -69,9 +69,12 @@ class Relay < Tableless
   def save
     if valid?
       # Maybe capture this in a transaction
+      index = 1
       self.athlets.map do |athlet|
         athlet.assign_attributes(self.attributes.slice(*Relay.allowed_attributes))
+        athlet.starter = (athlet.relaystarter * 10) + index
         athlet.save
+        index = index + 1
       end
     end
   end

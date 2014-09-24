@@ -2,11 +2,14 @@
 
   <div class="media">
     <a class="pull-left" href="#">
-      <%= image_tag('nightrun_trans_white.png', height: '160') %>
+      <%#= image_tag('nightrun_trans_white.png', height: '160') %>
+      <%= image_tag('sv_traisa_trans_white_inv.png', height: '160') %>
     </a>
     <div class="media-body">
-      <h1 class="media-heading" style="text-align: right">Nightrun 2014</h1>
-      <h2 class="media-heading" style="text-align: right">Sonntag, 19. Juli</h2>
+      <!-- <h1 class="media-heading" style="text-align: right">Nightrun 2014</h1>
+      <h2 class="media-heading" style="text-align: right">Sonntag, 19. Juli</h2> -->
+      <h1 class="media-heading" style="text-align: right">Volkslauf 2014</h1>
+      <h2 class="media-heading" style="text-align: right">Freitag, 3. Oktober</h2>
     </div>
   </div>
 </div>
@@ -43,7 +46,7 @@
       <%= link_to destroy_all_athlets_path, :class => 'btn btn-info pull-right', method: :delete do %>
         <%= fa_icon 'trash-o' %>
         Alle Einzelläufer löschen
-      <% end %>
+      <% end if false %>
     </div>
   </div>
 </div>
@@ -68,7 +71,7 @@
       <%= link_to destroy_all_relays_path, :class => 'btn btn-success pull-right', method: :delete do %>
         <%= fa_icon 'trash-o' %>
         Alle Staffeln löschen
-      <% end %>
+      <% end if false %>
     </div>
   </div>
 </div>

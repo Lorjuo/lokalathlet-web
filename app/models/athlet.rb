@@ -14,6 +14,7 @@
 #  relaystarter :integer
 #  created_at   :datetime
 #  updated_at   :datetime
+#  relaytmsize  :integer
 #
 
 class Athlet < ActiveRecord::Base
@@ -27,7 +28,7 @@ class Athlet < ActiveRecord::Base
   require 'to_xls-rails'
 
   # Validation
-  validates :starter, :presence => true, :inclusion => 0..2000 # TODO: restrict this
+  validates :starter, :presence => true, :inclusion => 0..10000 # TODO: restrict this
   validates :firstname, :presence => true, length: { minimum: 3 }
   validates :surname, :presence => true, length: { minimum: 3 }
   # validates :name, uniqueness: { scope: :year, message: "should happen once per year" }
@@ -76,6 +77,9 @@ class Athlet < ActiveRecord::Base
       row = Hash[[header, spreadsheet.row(i)].transpose]
       athlet = find_by_id(row["id"]) || new
       athlet.attributes = row.to_hash.slice(*self.allowed_attributes)
+      if athlet.relaytmsize > 1
+        athlet.relaystarter = (athlet.starter/10).floor
+      end
       athlet.save! if athlet.valid?
 
       # Add event

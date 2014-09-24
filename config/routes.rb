@@ -1,3 +1,46 @@
+# == Route Map (Updated 2014-09-24 10:42)
+#
+#                         Prefix Verb   URI Pattern                               Controller#Action
+#                         events GET    /events(.:format)                         events#index
+#                                POST   /events(.:format)                         events#create
+#                      new_event GET    /events/new(.:format)                     events#new
+#                     edit_event GET    /events/:id/edit(.:format)                events#edit
+#                          event GET    /events/:id(.:format)                     events#show
+#                                PATCH  /events/:id(.:format)                     events#update
+#                                PUT    /events/:id(.:format)                     events#update
+#                                DELETE /events/:id(.:format)                     events#destroy
+# autocomplete_firstname_athlets GET    /athlets/autocomplete_firstname(.:format) athlets#autocomplete_firstname
+#   autocomplete_surname_athlets GET    /athlets/autocomplete_surname(.:format)   athlets#autocomplete_surname
+#      autocomplete_club_athlets GET    /athlets/autocomplete_club(.:format)      athlets#autocomplete_club
+#                 import_athlets POST   /athlets/import(.:format)                 athlets#import
+#            suggestions_athlets GET    /athlets/suggestions(.:format)            athlets#suggestions
+#            destroy_all_athlets DELETE /athlets/destroy_all(.:format)            athlets#destroy_all
+#          show_multiple_athlets GET    /athlets/show_multiple(.:format)          athlets#show_multiple
+#           new_multiple_athlets GET    /athlets/new_multiple(.:format)           athlets#new_multiple
+#          edit_multiple_athlets GET    /athlets/edit_multiple(.:format)          athlets#edit_multiple
+#        create_multiple_athlets POST   /athlets/create_multiple(.:format)        athlets#create_multiple
+#        update_multiple_athlets PUT    /athlets/update_multiple(.:format)        athlets#update_multiple
+#       destroy_multiple_athlets PUT    /athlets/destroy_multiple(.:format)       athlets#destroy_multiple
+#                        athlets GET    /athlets(.:format)                        athlets#index
+#                                POST   /athlets(.:format)                        athlets#create
+#                     new_athlet GET    /athlets/new(.:format)                    athlets#new
+#                    edit_athlet GET    /athlets/:id/edit(.:format)               athlets#edit
+#                         athlet GET    /athlets/:id(.:format)                    athlets#show
+#                                PATCH  /athlets/:id(.:format)                    athlets#update
+#                                PUT    /athlets/:id(.:format)                    athlets#update
+#                                DELETE /athlets/:id(.:format)                    athlets#destroy
+#             destroy_all_relays DELETE /relays/destroy_all(.:format)             relays#destroy_all
+#                         relays GET    /relays(.:format)                         relays#index
+#                                POST   /relays(.:format)                         relays#create
+#                      new_relay GET    /relays/new(.:format)                     relays#new
+#                     edit_relay GET    /relays/:id/edit(.:format)                relays#edit
+#                          relay GET    /relays/:id(.:format)                     relays#show
+#                                PATCH  /relays/:id(.:format)                     relays#update
+#                                PUT    /relays/:id(.:format)                     relays#update
+#                                DELETE /relays/:id(.:format)                     relays#destroy
+#                           root GET    /                                         static_pages#home
+#
+
 Rails.application.routes.draw do
   resources :events
 

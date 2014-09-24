@@ -25,7 +25,7 @@ class AthletsController < ApplicationController
 
 
   def index
-    @athlets = Athlet.all
+    @athlets = Athlet.order(:event).order(:starter).all
     #@athlets = Athlet.where(:relaytmsize => 1).all
     #@relays = Athlet.where.not(:relaytmsize => 1).group(:relaystarter)
 
@@ -35,13 +35,15 @@ class AthletsController < ApplicationController
       #format.xls { send_data @athlets.to_xls }
 
       # gem 'to_xls-rails'
-      format.xls { send_data @athlets.to_xls(
+      format.xls {
+        #response.headers["Content-Disposition"] = 'attachement; filename='+Time.now.strftime("%Y%m%dT%H%M%S")+'.txt'
+        send_data @athlets.to_xls(
         #:except => [:created_at, :updated_at]
         :only => Athlet::allowed_attributes.map { |x| x.to_sym },
         :header => true,
         :header_columns => Athlet::allowed_attributes,
         #:prepend => [["Col 0, Row 0", "Col 1, Row 0"], ["Col 0, Row 1"]]
-      ) }
+      ), :filename => Time.now.strftime("%Y%m%dT%H%M%S")+'.xls' }
     end
   end
 

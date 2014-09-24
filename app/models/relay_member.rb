@@ -14,7 +14,9 @@
 #  relaystarter :integer
 #  created_at   :datetime
 #  updated_at   :datetime
+#  relaytmsize  :integer
 #
+
 
 class RelayMember < ActiveRecord::Base
 

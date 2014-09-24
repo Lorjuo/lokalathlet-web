@@ -27,7 +27,7 @@
             <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
             <%#= f.input :sex %>
 
-            <%= f.input :sex, collection: [:M, :F], :input_html => { :class => :sex }  %>
+            <%= f.input :sex, collection: [:M, :W], :input_html => { :class => :sex }  %>
 
             <%= f.input :club, :input_html => { :class => :club,
               :data => { :autocomplete => autocomplete_club_athlets_path } } %>
