@@ -29,12 +29,14 @@ class Athlet < ActiveRecord::Base
 
   # Validation
   validates :starter, :presence => true, :inclusion => 0..10000 # TODO: restrict this
+  #http://stackoverflow.com/questions/3276110/rails-3-validation-on-uniqueness-on-multiple-attributes
+  validates :starter, :uniqueness => {:scope => [:event]}
   validates :firstname, :presence => true, length: { minimum: 3 }
   validates :surname, :presence => true, length: { minimum: 3 }
   # validates :name, uniqueness: { scope: :year, message: "should happen once per year" }
   validates :birthday, :presence => true, :inclusion => 1900..2100
   validates :sex, :presence => true
-  validates :club, :allow_blank => :true, length: { minimum: 3 }
+  #validates :club, :allow_blank => :true, length: { minimum: 3 }
   validates :event, :presence => true
 
   # Getter / Setter
@@ -77,10 +79,22 @@ class Athlet < ActiveRecord::Base
       row = Hash[[header, spreadsheet.row(i)].transpose]
       athlet = find_by_id(row["id"]) || new
       athlet.attributes = row.to_hash.slice(*self.allowed_attributes)
+
+      if athlet.relaytmsize.nil?
+        athlet.relaytmsize = 1
+      end
+
       if athlet.relaytmsize > 1
         athlet.relaystarter = (athlet.starter/10).floor
       end
-      athlet.save! if athlet.valid?
+
+      if athlet.valid?
+        athlet.save!
+      else
+        athlet.errors.each do |error|
+          Rails.logger.warn error
+        end
+      end
 
       # Add event
       # http://stackoverflow.com/questions/18082778/rails-checking-if-a-record-exists-in-database

@@ -44,11 +44,19 @@ class AthletsController < ApplicationController
         :header_columns => Athlet::allowed_attributes,
         #:prepend => [["Col 0, Row 0", "Col 1, Row 0"], ["Col 0, Row 1"]]
       ), :filename => Time.now.strftime("%Y%m%dT%H%M%S")+'.xls' }
+
+      format.json { render json: @athlets }
+      format.xml { render xml: @athlets }
     end
   end
 
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @athlet }
+      format.xml { render xml: @athlet }
+    end
   end
 
   def suggestions
@@ -92,10 +100,18 @@ class AthletsController < ApplicationController
     @athlet = Athlet.new(athlet_params)
 
     if @athlet.save
-      redirect_to @athlet, notice: 'Athlet was successfully created.'
+      #https://github.com/rails-api/rails-api/blob/master/lib/rails-api/templates/rails/scaffold_controller/controller.rb
+      respond_to do |format|
+        format.html { redirect_to @athlet, notice: 'Athlet was successfully created.' }
+        format.json { render json: @athlet, status: :created, location: @athlet }
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.json { render json: @athlet.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
 
@@ -130,9 +146,17 @@ class AthletsController < ApplicationController
 
   def update
     if @athlet.update(athlet_params)
-      redirect_to @athlet, notice: 'Athlet was successfully updated.'
+      #https://github.com/rails-api/rails-api/blob/master/lib/rails-api/templates/rails/scaffold_controller/controller.rb
+      respond_to do |format|
+        format.html { redirect_to @athlet, notice: 'Athlet was successfully updated.' }
+        #format.json { head :no_content }
+        format.json { render json: @athlet, status: :created, location: @athlet }
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: @athlet.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -156,7 +180,13 @@ class AthletsController < ApplicationController
 
   def destroy
     @athlet.destroy
-    redirect_to athlets_url, notice: 'Athlet was successfully destroyed.'
+
+    #https://github.com/rails-api/rails-api/blob/master/lib/rails-api/templates/rails/scaffold_controller/controller.rb
+    respond_to do |format|
+      format.html { redirect_to athlets_url, notice: 'Athlet was successfully destroyed.' }
+      #format.json { head :no_content }
+      format.json { head :no_content, status: :success }
+    end
   end
 
 

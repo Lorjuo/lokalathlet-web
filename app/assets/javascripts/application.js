@@ -41,5 +41,5 @@
 //
 //= require suggestion_box
 // 
-// require turbolinks
+// require turbolinks # Problems with ajax requests
 // require_tree .

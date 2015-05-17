@@ -36,6 +36,8 @@ window.datatablesDefaults =
   ]
   bDestroy: true
   # For html column filtering: http://datatables.net/plug-ins/filtering#functions
+  oLanguage: #https://gist.github.com/ricardodovalle/7244900
+    sUrl: "datatable_i18n"
 
 window.datatablesPageable =
   sDom: "<r>t<'row'<'col-md-6'i><'col-md-6'p>>"

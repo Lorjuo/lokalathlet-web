@@ -19,10 +19,10 @@
           <div class="form-inputs">
             <%= f.input :starter %>
 
-            <%= f.input :firstname, :input_html => { :class => :firstname,
-              :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
             <%= f.input :surname, :input_html => { :class => :surname,
               :data => { :autocomplete => autocomplete_surname_athlets_path } } %>
+            <%= f.input :firstname, :input_html => { :class => :firstname,
+              :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
             <%= f.input :birthday, :as => :integer, :input_html => { :class => :birthday, :value => @athlet.birthday } %>
             <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
             <%#= f.input :sex %>
@@ -31,7 +31,15 @@
 
             <%= f.input :club, :input_html => { :class => :club,
               :data => { :autocomplete => autocomplete_club_athlets_path } } %>
-            <%= f.input :event, :as => :hidden %>
+            <%#= f.input :event %>
+            <%= f.input :event,
+            :as => :select,
+            :collection => Event.where(:team_size => 1).where(:active => true).order(:name => :asc),
+            :label_method => :name,
+            :value_method => :name,
+            :include_blank => false,
+            :input_html => { :class => "chosen"} %>
+            <%#= f.input :event, :as => :hidden %>
             <%#= f.input :relaytm %>
             <%#= f.input :relaystarter %>
             <%= f.input :relaytmsize, :as => :hidden %>

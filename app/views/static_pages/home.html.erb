@@ -32,7 +32,7 @@
       </div>
       <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
-        <% Event.where(:team_size => 1).each do |event| %>
+        <% Event.where(:team_size => 1).where(:active => true).each do |event| %>
           <li>
             <a href="/athlets">
               <%= event.name %>
@@ -57,7 +57,7 @@
     </div>
     <div class="panel-body">
       <ul class="nav nav-pills nav-stacked">
-        <% Event.where.not(:team_size => 1).each do |event| %>
+        <% Event.where.not(:team_size => 1).where(:active => true).each do |event| %>
           <li>
             <a href="/relays">
               <%= event.name %>

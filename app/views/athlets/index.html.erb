@@ -2,56 +2,68 @@
   <h1>Einzelstarter</h1>
 </div>
 
+<ul class="nav nav-tabs" role="tablist">
+  <% active = true %>
+  <% Event.where(:team_size => 1).where(:active => true).each do |event| %>
+    <li class="<%= active ? 'active' : '' %>"><a href="#<%= event.name %>" role="tab" data-toggle="tab"><%= event.name %></a></li>
+    <% active = false %>
+  <% end %>
+</ul>
 
-<% Event.where(:team_size => 1).each do |event| %>
-  <div class="section">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <div class="panel-title">
-          <%= event.name %>
+<div class="tab-content">
+  <% active = true %>
+  <% Event.where(:team_size => 1).where(:active => true).each do |event| %>
+    <div class="tab-pane <%= active ? 'active' : '' %>" id="<%= event.name %>">
+    <% active = false %>
+    <!-- <div class="section"> -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <%= event.name %>
+          </div>
         </div>
       </div>
-    </div>
 
-    <table class="table table-bordered table-striped datatable searchable">
-      <thead>
-        <tr>
-          <th>Starter</th>
-          <th>Name</th>
-          <th>Birthday</th>
-          <th>Sex</th>
-          <th>Club</th>
-          <th>Event</th>
-          <th>Relaytm</th>
-          <th>Relaystarter</th>
-          <th class="no-sort"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @athlets.where(:event => event.name).each do |athlet| %>
+      <table class="table table-bordered table-striped datatable searchable">
+        <thead>
           <tr>
-            <td><%= athlet.starter %></td>
-            <td><%= link_to athlet.name, athlet %></td>
-            <td><%= athlet.birthday %></td>
-            <td><%= athlet.sex %></td>
-            <td><%= athlet.club %></td>
-            <td><%= athlet.event %></td>
-            <td><%= athlet.relaytm %></td>
-            <td><%= athlet.relaystarter %></td>
-            <td>
-              <%= link_to edit_athlet_path(athlet), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
-                <%= tag :span, :class => "glyphicon glyphicon-edit" %>
-              <% end %>
-              <%= link_to athlet, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
-                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
-              <% end %>
-            </td>
+            <th>Starter</th>
+            <th>Name</th>
+            <th>Birthday</th>
+            <th>Sex</th>
+            <th>Club</th>
+            <th>Event</th>
+            <th>Relaytm</th>
+            <th>Relaystarter</th>
+            <th class="no-sort"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
 
-    <%= link_to 'Neuen Athleten anmelden', new_athlet_path(:event => event.name), :class => 'btn btn-default' %>
-  </div>
-<% end %>
+        <tbody>
+          <% @athlets.where(:event => event.name).each do |athlet| %>
+            <tr>
+              <td><%= athlet.starter %></td>
+              <td><%= link_to athlet.name, athlet %></td>
+              <td><%= athlet.birthday %></td>
+              <td><%= athlet.sex %></td>
+              <td><%= athlet.club %></td>
+              <td><%= athlet.event %></td>
+              <td><%= athlet.relaytm %></td>
+              <td><%= athlet.relaystarter %></td>
+              <td>
+                <%= link_to edit_athlet_path(athlet), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+                  <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+                <% end %>
+                <%= link_to athlet, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                  <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to 'Neuen Athleten anmelden', new_athlet_path(:event => event.name), :class => 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>

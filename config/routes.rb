@@ -123,4 +123,13 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  get 'datatable_i18n', to: 'datatables#datatable_i18n'
+  # https://gist.github.com/ricardodovalle/7244900
+  #scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
+  #  get 'datatable_i18n', to: 'datatables#datatable_i18n'
+  #end
+ 
+  #get '*path', to: redirect("/#{I18n.default_locale}/%{path}"), constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
+  #get '', to: redirect("/#{I18n.default_locale}")
 end

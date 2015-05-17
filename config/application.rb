@@ -37,6 +37,8 @@ module LokalathletWeb
     end
 
     config.assets.precompile += %w( dark.css light.css )
+    config.i18n.load_path += Dir["#{Rails.root.to_s}/config/locales/**/*.{rb,yml}"]
     config.i18n.default_locale = :de
+    #Sprache <%= I18n.locale %>
   end
 end

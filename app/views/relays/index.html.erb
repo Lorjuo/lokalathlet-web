@@ -2,7 +2,7 @@
   <h1>Staffeln</h1>
 </div>
 
-<% Event.where.not(:team_size => 1).each do |event| %>
+<% Event.where.not(:team_size => 1).where(:active => true).each do |event| %>
   <div class="section">
     <div class="panel panel-primary">
       <div class="panel-heading">

@@ -57,6 +57,7 @@ class Relay < Tableless
   end
 
   def set_defaults
+    #self.relaytmsize ||= self.event.team_size
     self.relaytmsize ||= 4
   end
 
