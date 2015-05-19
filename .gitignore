@@ -35,3 +35,5 @@
 # Ignore sublime Project Settings
 *.sublime-project
 *.sublime-workspace
+
+.idea/
