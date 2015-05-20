@@ -11,8 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui
+//= require jquery.ui.all
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/extras/dataTables.responsive
+//= require dataTables/bootstrap/2/jquery.dataTables.bootstrap
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //
 //
 //= require bootstrap
@@ -34,7 +38,7 @@
 //= require tmpl
 //
 //# Underscore js
-//=require underscore
+//= require underscore
 //# at the moment needed for jquery dataTables responsive and gmaps4rails
 //
 //= require suggestion_box

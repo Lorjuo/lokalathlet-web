@@ -1,9 +1,11 @@
 // Extern
 
 // Datatable
-@import "dataTables/jquery.dataTables";
-//@import "dataTables/jquery.dataTables.bootstrap3";
+//@import "dataTables/jquery.dataTables";
+//@import "dataTables/jquery.dataTables3.bootstrap3";
 //@import "dataTables/jquery.dataTables.responsive";
+@import "dataTables/bootstrap/3/jquery.dataTables.bootstrap";
+@import "dataTables/extras/dataTables.responsive";
 
 // Form
 /* Chosen */
@@ -17,7 +19,7 @@
 //@import "fancybox";
 
 // JQuery
-@import "jquery-ui";
+@import "jquery.ui.all";
 
 
 // Mixins

@@ -84,8 +84,8 @@ class Athlet < ActiveRecord::Base
         athlet.relaytmsize = 1
       end
 
-      if athlet.relaytmsize > 1
-        athlet.relaystarter = (athlet.starter/10).floor
+      if athlet.relaytmsize > 1 && !athlet.starter.blank?
+        athlet.relaystarter = (athlet.starter / 10).floor
       end
 
       if athlet.valid?
@@ -132,11 +132,15 @@ class Athlet < ActiveRecord::Base
   # end
 
   def self.open_spreadsheet(file)
-    case File.extname(file.original_filename)
-      when ".csv" then Roo::Csv.new(file.path, nil, :ignore)
-      when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
-      when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
-      else raise "Unknown file type: #{file.original_filename}"
+    if !file.blank?
+      case File.extname(file.original_filename)
+        when ".csv" then Roo::Csv.new(file.path, nil, :ignore)
+        when ".xls" then Roo::Excel.new(file.path)
+        when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
+        else raise "Unknown file type: #{file.original_filename}"
+      end
+    else
+      raise "Select file first!"
     end
   end
 end

@@ -44,7 +44,8 @@ gem 'sass-rails', '~> 5.0'
 
 # Excel
 gem 'to_xls-rails'
-gem 'roo'
+#gem 'roo'
+gem 'roo-xls', git: 'git://github.com/roo-rb/roo-xls.git'
 # gem 'writeexcel'
 
 # Forms
@@ -61,10 +62,11 @@ gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
   gem 'rails3-jquery-autocomplete'
 
 # Icons
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 # JQuery
 gem 'jquery-ui-rails'
+#gem 'jquery-ui-sass-rails', git: 'git://github.com/jhilden/jquery-ui-sass-rails.git'
 
 # Profile
 #gem 'rack-mini-profiler'
@@ -79,7 +81,7 @@ gem 'underscore-rails' # needed also for datatables
 group :development do
   gem 'hirb'
 
-  gem "bullet"
+  gem 'bullet'
 
   # gem 'cequel'
 
