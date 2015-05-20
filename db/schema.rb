@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517082447) do
+ActiveRecord::Schema.define(version: 20140602140606) do
 
-  create_table "athlets", force: true do |t|
+  create_table "athlets", force: :cascade do |t|
     t.integer  "starter"
     t.string   "firstname"
     t.string   "surname"
@@ -23,17 +23,17 @@ ActiveRecord::Schema.define(version: 20150517082447) do
     t.string   "event"
     t.integer  "relaytm"
     t.integer  "relaystarter"
+    t.integer  "relaytmsize"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "relaytmsize"
   end
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.string   "name"
     t.integer  "team_size"
+    t.boolean  "active",     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",     default: true
   end
 
 end

@@ -25,7 +25,13 @@ class AthletsController < ApplicationController
 
 
   def index
-    @athlets = Athlet.order(:event).order(:starter).all
+    if params[:event]
+      p params[:event]
+      @athlets = Athlet.order(:event).order(:starter).all.where(":event = ?", params[:event])
+    else
+      @athlets = Athlet.order(:event).order(:starter).all
+    end
+
     #@athlets = Athlet.where(:relaytmsize => 1).all
     #@relays = Athlet.where.not(:relaytmsize => 1).group(:relaystarter)
 
@@ -60,7 +66,9 @@ class AthletsController < ApplicationController
   end
 
   def suggestions
-    @athlets = Athlet.select("athlets.*, GROUP_CONCAT(athlets.event SEPARATOR ', ') AS events")
+    #@athlets = Athlet.select("athlets.*, GROUP_CONCAT(athlets.event SEPARATOR ', ') AS events")
+    # sqlite variante
+    @athlets = Athlet.select("athlets.*, GROUP_CONCAT(athlets.event, ', ') AS events")
     @athlets = @athlets.group("firstname, surname, sex, birthday").limit(5)
     @athlets = @athlets.where("firstname LIKE (?)", "%#{params[:firstname]}%") if params[:firstname].present?
     @athlets = @athlets.where("surname LIKE (?)", "%#{params[:surname]}%") if params[:surname].present?

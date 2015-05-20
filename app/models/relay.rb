@@ -1,4 +1,5 @@
-class Relay < Tableless
+class Relay < ActiveRecord::Base
+  has_no_table
   has_many :athlets, :primary_key => :relaystarter, :foreign_key => :relaystarter, :class_name => RelayMember
   accepts_nested_attributes_for :athlets
 

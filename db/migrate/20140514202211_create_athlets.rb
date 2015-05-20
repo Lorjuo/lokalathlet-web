@@ -10,6 +10,7 @@ class CreateAthlets < ActiveRecord::Migration
       t.string :event
       t.integer :relaytm
       t.integer :relaystarter
+      t.integer :relaytmsize
 
       t.timestamps
     end

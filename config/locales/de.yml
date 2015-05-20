@@ -67,5 +67,5 @@ de:
     options:
       athlet:
         sex:
-          M: 'männlich'
-          W: 'weiblich'
+          M: 'M'
+          W: 'W'
