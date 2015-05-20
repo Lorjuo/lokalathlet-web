@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.ui.all
+//= require jquery-ui
 //= require jquery_ujs
 //
 //
@@ -26,8 +26,6 @@
 //
 //# Table
 //= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap3
-//= require dataTables/jquery.dataTables.responsive
 //= require datatables
 //
 //= require jquery.animate-shadow
