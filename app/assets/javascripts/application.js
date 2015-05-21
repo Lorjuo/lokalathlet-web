@@ -13,9 +13,12 @@
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
+//
+//# Table
+//= require datatables
 //= require dataTables/jquery.dataTables
+//#= require dataTables/bootstrap/2/jquery.dataTables.bootstrap
 //= require dataTables/extras/dataTables.responsive
-//= require dataTables/bootstrap/2/jquery.dataTables.bootstrap
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //
 //
@@ -27,10 +30,7 @@
 //= require fileupload_button
 //# Loaders
 //= require tooltip_loader
-//
-//# Table
-//= require dataTables/jquery.dataTables
-//= require datatables
+
 //
 //= require jquery.animate-shadow
 //
