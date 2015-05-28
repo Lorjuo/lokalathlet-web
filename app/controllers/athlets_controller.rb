@@ -25,12 +25,12 @@ class AthletsController < ApplicationController
 
 
   def index
-    #if params[:event]
-    #  p params[:event]
-    #  @athlets = Athlet.order(:event).order(:starter).all.where(":event = ?", params[:event])
-    #else
+    if params[:event]
+      p params[:event]
+      @athlets = Athlet.order(:event).order(:starter).where(:event => params[:event])
+    else
       @athlets = Athlet.order(:event).order(:starter).all
-    #end
+    end
 
     #@athlets = Athlet.where(:relaytmsize => 1).all
     #@relays = Athlet.where.not(:relaytmsize => 1).group(:relaystarter)
