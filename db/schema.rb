@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140602140606) do
     t.integer  "relaytm"
     t.integer  "relaystarter"
     t.integer  "relaytmsize"
+    t.string   "transponderid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

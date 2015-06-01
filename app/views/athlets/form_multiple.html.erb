@@ -84,6 +84,7 @@
                 <%= f.input :sex, collection: [:M, :W], :input_html => { :class => :sex } %>
 
                 <%= f.input :relaytmsize, :input_html => { :class => :relaytmsize }, :as => :hidden %>
+                <%= f.input :transponderid, :input_html => { :class => :transponderid, :value => athlet.transponderid } %>
               </fieldset>
             <% end %>
           </div>

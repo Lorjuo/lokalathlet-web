@@ -15,6 +15,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  relaytmsize  :integer
+#  transponderid :string(255)
 #
 
 
@@ -23,7 +24,7 @@ class RelayMember < ActiveRecord::Base
   self.table_name = "athlets"
 
   def self.allowed_attributes
-    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'relaytm', 'relaystarter', 'relaytmsize']
+    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid']
   end
 
   # Validation
@@ -31,6 +32,7 @@ class RelayMember < ActiveRecord::Base
   validates :surname, :presence => true, length: { minimum: 3 }
   validates :birthday, :presence => true, :inclusion => 1900..2100
   validates :sex, :presence => true
+  validates :transponderid, :presence => false
 
   # Getter / Setter
   # http://stackoverflow.com/questions/2033069/convert-data-when-putting-them-into-a-database-using-active-record

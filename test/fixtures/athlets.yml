@@ -28,6 +28,7 @@ one:
   event: MyString
   relaytm: 1
   relaystarter: 1
+  transponderid: MyString
 
 two:
   starter: 1
@@ -39,3 +40,4 @@ two:
   event: MyString
   relaytm: 1
   relaystarter: 1
+  transponderid: MyString

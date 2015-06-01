@@ -55,6 +55,7 @@ de:
     club: Verein
     relaystarter: Teamstartnummer
     event: Veranstaltung
+    transpondrid: TransponderId
 
   activerecord:
     models:

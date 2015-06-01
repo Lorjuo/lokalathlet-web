@@ -15,13 +15,14 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  relaytmsize  :integer
+#  transponderid :string(255)
 #
 
 class Athlet < ActiveRecord::Base
 
 
   def self.allowed_attributes
-    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'event', 'relaytm', 'relaystarter', 'relaytmsize']
+    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'event', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid']
   end
 
   require 'csv'

@@ -43,6 +43,11 @@
   <%= @athlet.relaystarter %>
 </p>
 
+<p>
+  <strong>TransponderId:</strong>
+  <%= @athlet.transponderid %>
+</p>
+
 <%= link_to 'Bearbeiten', edit_athlet_path(@athlet) %> |
 <%= link_to 'Übersicht', athlets_path %> |
 <%= link_to 'Weiteren Erfassen', new_athlet_path %>

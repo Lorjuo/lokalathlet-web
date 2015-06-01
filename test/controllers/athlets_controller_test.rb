@@ -18,7 +18,8 @@ class AthletsControllerTest < ActionController::TestCase
 
   test "should create athlet" do
     assert_difference('Athlet.count') do
-      post :create, athlet: { birthday: @athlet.birthday, club: @athlet.club, event: @athlet.event, firstname: @athlet.firstname, relaystarter: @athlet.relaystarter, relaytm: @athlet.relaytm, sex: @athlet.sex, starter: @athlet.starter, surname: @athlet.surname }
+      post :create, athlet: { birthday: @athlet.birthday, club: @athlet.club, event: @athlet.event, firstname: @athlet.firstname, relaystarter: @athlet.relaystarter, relaytm: @athlet.relaytm, sex: @athlet.sex, starter: @athlet.starter, surname: @athlet.surname,
+                              transponderid: @athlet.transponderid }
     end
 
     assert_redirected_to athlet_path(assigns(:athlet))
@@ -35,7 +36,8 @@ class AthletsControllerTest < ActionController::TestCase
   end
 
   test "should update athlet" do
-    patch :update, id: @athlet, athlet: { birthday: @athlet.birthday, club: @athlet.club, event: @athlet.event, firstname: @athlet.firstname, relaystarter: @athlet.relaystarter, relaytm: @athlet.relaytm, sex: @athlet.sex, starter: @athlet.starter, surname: @athlet.surname }
+    patch :update, id: @athlet, athlet: { birthday: @athlet.birthday, club: @athlet.club, event: @athlet.event, firstname: @athlet.firstname, relaystarter: @athlet.relaystarter, relaytm: @athlet.relaytm, sex: @athlet.sex, starter: @athlet.starter, surname: @athlet.surname,
+                                          transponderid: @athlet.transponderid }
     assert_redirected_to athlet_path(assigns(:athlet))
   end
 
