@@ -1,14 +1,14 @@
 # Function that reads value from input field and filters datatable by its value
 filter_text = (tableContainer, element, colNum) ->
   if ($(tableContainer).length > 0)
-    oTable = $(tableContainer).dataTable()
+    oTable = $(tableContainer).DataTable()
     oTable.fnFilter( $(element)[0].value, colNum )
 
 
 # Function that reads value from input field and filters datatable by its value
 filter_select = (tableContainer, element, colNum) ->
   if ($(tableContainer).length > 0)
-    oTable = $(tableContainer).dataTable()
+    oTable = $(tableContainer).DataTable()
 
     selectedIds = new Array()
     $(element).children(":selected").each ->

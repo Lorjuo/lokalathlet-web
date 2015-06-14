@@ -48,7 +48,13 @@ class Athlet < ActiveRecord::Base
   end
 
   def birthday=(value)
-    self[:birthday] = Date.new(value.to_i,1,1)
+    datestr = String.try_convert(value)
+    if !datestr.blank? && datestr.size == 10
+      datestr = datestr[6,datestr.size-1]
+    else
+      datestr = "2015"
+    end
+    self[:birthday] = Date.new(datestr.to_i,1,1)
   end
 
   # Virtual Attributes
@@ -85,7 +91,7 @@ class Athlet < ActiveRecord::Base
         athlet.relaytmsize = 1
       end
 
-      if athlet.relaytmsize > 1 && !athlet.starter.blank?
+      if !athlet.starter.blank? && athlet.relaytmsize > 1
         athlet.relaystarter = (athlet.starter / 10).floor
       end
 
@@ -137,7 +143,7 @@ class Athlet < ActiveRecord::Base
       case File.extname(file.original_filename)
         when ".csv" then Roo::Csv.new(file.path, nil, :ignore)
         when ".xls" then Roo::Excel.new(file.path)
-        when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
+        when ".xlsx" then Roo::Excelx.new(file.path)
         else raise "Unknown file type: #{file.original_filename}"
       end
     else
