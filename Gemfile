@@ -4,6 +4,9 @@ gem 'activerecord-tableless', '~> 1.0', git: 'git://github.com/david135/activere
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
+
+# Database
+# gem 'mysql2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
@@ -39,8 +42,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
 
 
-# Database
-# gem 'mysql2'
+
 
 # Excel
 gem 'to_xls-rails'
@@ -115,6 +117,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'mysql2'
   # gem 'pg'
 end
 
