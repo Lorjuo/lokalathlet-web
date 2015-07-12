@@ -22,7 +22,7 @@ window.filter_select = filter_select
 
 # Define default hash options for datatables
 window.datatablesDefaults =
-  sPaginationType: "bootstrap"
+  sPaginationType: "full_numbers"
   # Setup for responsive datatables helper.
   bAutoWidth: false
   bStateSave: false
@@ -63,10 +63,10 @@ drawCallback = (oSettings) ->
 
 
 # Set hash for responsive layout
-window.datatablesResponsive =
-  fnPreDrawCallback: preDrawCallback
-  fnRowCallback: rowCallback
-  fnDrawCallback: drawCallback
+#window.datatablesResponsive =
+#  fnPreDrawCallback: preDrawCallback
+#  fnRowCallback: rowCallback
+#  fnDrawCallback: drawCallback
 
 
 # Create Breakpoint definition depending on bootstrap
@@ -81,7 +81,7 @@ window.breakpointDefinition =
 
 # Attach onload actions
 $ ->
-  $('.datatable.defaults').dataTable $.extend( {}, datatablesDefaults, datatablesResponsive )
-  $('.datatable.pageable').dataTable $.extend( {}, datatablesDefaults, datatablesPageable, datatablesResponsive )
-  $('.datatable.searchable').dataTable $.extend( {}, datatablesDefaults, datatablesSearchable, datatablesResponsive )
+  $('.datatable.defaults').dataTable $.extend( {}, datatablesDefaults )
+  $('.datatable.pageable').dataTable $.extend( {}, datatablesDefaults, datatablesPageable )
+  $('.datatable.searchable').dataTable $.extend( {}, datatablesDefaults, datatablesSearchable )
   

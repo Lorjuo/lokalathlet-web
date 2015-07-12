@@ -75,6 +75,7 @@ class Relay < ActiveRecord::Base
       self.athlets.map do |athlet|
         athlet.assign_attributes(self.attributes.slice(*Relay.allowed_attributes))
         athlet.starter = (athlet.relaystarter * 10) + index
+        athlet.relaytm = index
         athlet.save
         index = index + 1
       end
