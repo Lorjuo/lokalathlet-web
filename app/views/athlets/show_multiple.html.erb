@@ -1,36 +1,39 @@
 <dl class="dl-horizontal">
-  <dt>Club</dt>
+  <dt>Club:</dt>
   <dd><%= @athlets.first.club %></dd>
 
-  <dt>Event</dt>
+  <dt>Event:</dt>
   <dd><%= @athlets.first.event %></dd>
 
-  <dt>Relaystarter</dt>
+  <dt>Relay Starter:</dt>
   <dd><%= @athlets.first.relaystarter %></dd>
 </dl>
 
 <% @athlets.each do |athlet| %>
 
   <dl class="dl-horizontal">
-    <dt>Starter</dt>
+    <dt>Starter:</dt>
     <dd><%= athlet.starter %></dd>
 
-    <dt>Firstname</dt>
+    <dt>Firstname:</dt>
     <dd><%= athlet.firstname %></dd>
 
-    <dt>Surname</dt>
+    <dt>Surname:</dt>
     <dd><%= athlet.surname %></dd>
 
-    <dt>Birthday</dt>
+    <dt>Birthday:</dt>
     <dd><%= athlet.birthday %></dd>
 
-    <dt>Sex</dt>
+    <dt>Sex:</dt>
     <dd><%= athlet.sex %></dd>
 
-    <dt>Relaytm</dt>
+    <dt>Relay Team Size:</dt>
+    <dd><%= athlet.relaytmsize %></dd>
+
+    <dt>Relay Team Member:</dt>
     <dd><%= athlet.relaytm %></dd>
 
-    <dt>TransponderId</dt>
+    <dt>Transponder Id:</dt>
     <dd><%= athlet.transponderid %></dd>
   </dl>
 <% end %>

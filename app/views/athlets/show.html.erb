@@ -1,52 +1,31 @@
-<p>
-  <strong>Starter:</strong>
-  <%= @athlet.starter %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Starter:</dt>
+  <dd><%= @athlet.starter %></dd>
 
-<p>
-  <strong>Firstname:</strong>
-  <%= @athlet.firstname %>
-</p>
+  <dt>Firstname:</dt>
+  <dd><%= @athlet.firstname %></dd>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @athlet.surname %>
-</p>
+  <dt>Surname:</dt>
+  <dd><%= @athlet.surname %></dd>
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @athlet.birthday %>
-</p>
+  <dt>Birthday:</dt>
+  <dd><%= @athlet.birthday %></dd>
 
-<p>
-  <strong>Sex:</strong>
-  <%= @athlet.sex %>
-</p>
+  <dt>Sex:</dt>
+  <dd><%= @athlet.sex %></dd>
 
-<p>
-  <strong>Club:</strong>
-  <%= @athlet.club %>
-</p>
+  <dt>Club:</dt>
+  <dd><%= @athlet.club %></dd>
 
-<p>
-  <strong>Event:</strong>
-  <%= @athlet.event %>
-</p>
+  <dt>Event:</dt>
+  <dd><%= @athlet.event %></dd>
 
-<p>
-  <strong>Relaytm:</strong>
-  <%= @athlet.relaytm %>
-</p>
+  <dt>Relay Team Size:</dt>
+  <dd><%= @athlet.relaytmsize %></dd>
 
-<p>
-  <strong>Relaystarter:</strong>
-  <%= @athlet.relaystarter %>
-</p>
-
-<p>
-  <strong>TransponderId:</strong>
-  <%= @athlet.transponderid %>
-</p>
+  <dt>Transponder Id:</dt>
+  <dd><%= @athlet.transponderid %></dd>
+</dl>
 
 <%= link_to 'Bearbeiten', edit_athlet_path(@athlet) %> |
 <%= link_to 'Übersicht', athlets_path %> |

@@ -76,6 +76,9 @@ class Relay < ActiveRecord::Base
         athlet.assign_attributes(self.attributes.slice(*Relay.allowed_attributes))
         athlet.starter = (athlet.relaystarter * 10) + index
         athlet.relaytm = index
+        if athlet.transponderid.blank?
+          athlet.transponderid = athlet.starter;
+        end
         athlet.save
         index = index + 1
       end

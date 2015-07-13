@@ -29,6 +29,7 @@ class RelaysController < ApplicationController
 
 
   def edit
+    pp @relay
   end
 
 

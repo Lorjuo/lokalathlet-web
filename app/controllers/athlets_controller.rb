@@ -106,7 +106,10 @@ class AthletsController < ApplicationController
 
   def create
     @athlet = Athlet.new(athlet_params)
-
+    @athlet.relaytmsize = 1
+    if @athlet.transponderid.blank?
+      @athlet.transponderid = @athlet.starter;
+    end
     if @athlet.save
       #https://github.com/rails-api/rails-api/blob/master/lib/rails-api/templates/rails/scaffold_controller/controller.rb
       respond_to do |format|
@@ -153,6 +156,10 @@ class AthletsController < ApplicationController
 
 
   def update
+
+    if params[:athlet][:transponderid].blank?
+      params[:athlet][:transponderid] = params[:athlet][:starter]
+    end
     if @athlet.update(athlet_params)
       #https://github.com/rails-api/rails-api/blob/master/lib/rails-api/templates/rails/scaffold_controller/controller.rb
       respond_to do |format|
