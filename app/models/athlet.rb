@@ -49,7 +49,7 @@ class Athlet < ActiveRecord::Base
 
   def birthday=(value)
     datestr = String.try_convert(value)
-    if !datestr.blank? && datestr.size == 10
+    if !datestr.blank? && datestr.size > 3
       datestr = datestr[0,4]
     else
       datestr = "2015"
