@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @event.name %></dd>
 
-<p>
-  <strong>Teamgröße:</strong>
-  <%= @event.team_size %>
-</p>
+  <dt>Teamgröße:</dt>
+  <dd><%= @event.team_size %></dd>
+</dl>
 
 <%= link_to 'Bearbeiten', edit_event_path(@event) %> |
 <%= link_to 'Zurück', events_path %>

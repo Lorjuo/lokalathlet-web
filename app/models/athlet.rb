@@ -84,15 +84,23 @@ class Athlet < ActiveRecord::Base
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      athlet = find_by_id(row["id"]) || new
+      athlet = new #find_by_id(row["id"]) || new
       athlet.attributes = row.to_hash.slice(*self.allowed_attributes)
-
+      athlet.id = nil
       if athlet.relaytmsize.nil?
         athlet.relaytmsize = 1
       end
 
       if !athlet.starter.blank? && athlet.relaytmsize > 1
-        athlet.relaystarter = (athlet.starter / 10).floor
+        # nicht noetig
+        #athlet.relaystarter = (athlet.starter / 10).floor
+        if athlet.transponderid.blank?
+          athlet.transponderid = athlet.relaystarter
+        end
+      end
+
+      if athlet.transponderid.blank?
+        athlet.transponderid = athlet.starter
       end
 
       if athlet.valid?
