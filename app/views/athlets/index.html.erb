@@ -3,17 +3,18 @@
 </div>
 
 <ul class="nav nav-tabs" role="tablist">
-  <% active = true %>
-  <% Event.where(:team_size => 1).where(:active => true).each do |event| %>
-    <li class="<%= active ? 'active' : '' %>"><a href="#<%= event.name %>" role="tab" data-toggle="tab"><%= event.name %></a></li>
-    <% active = false %>
+  <% events = Event.where(:team_size => 1).where(:active => true) %>
+  <%# debugger %>
+  <% session[:event] = Event.first.name if session[:event].nil? %>
+  <% events.each do |event| %>
+      <li class="<%= (event.name == session[:event]) ? 'active' : '' %>"><a href="#<%= event.name %>" role="tab" data-toggle="tab"><%= event.name %></a></li>
   <% end %>
 </ul>
 
 <div class="tab-content">
   <% active = true %>
   <% Event.where(:team_size => 1).where(:active => true).each do |event| %>
-    <div class="tab-pane <%= active ? 'active' : '' %>" id="<%= event.name %>">
+    <div class="tab-pane <%= (event.name == session[:event]) ? 'active' : '' %>" id="<%= event.name %>">
     <% active = false %>
     <!-- <div class="section"> -->
       <div class="panel panel-primary">

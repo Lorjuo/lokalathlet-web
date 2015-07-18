@@ -84,6 +84,7 @@ class AthletsController < ApplicationController
   def new
     @athlet = Athlet.new(:event => params[:event])
     @athlet.relaytmsize = 1
+    session[:event] = params[:event]
   end
 
 
