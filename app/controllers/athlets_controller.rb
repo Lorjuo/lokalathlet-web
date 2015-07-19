@@ -96,6 +96,7 @@ class AthletsController < ApplicationController
 
 
   def edit
+    session[:event] = params[:event]
   end
 
 
