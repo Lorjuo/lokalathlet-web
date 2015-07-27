@@ -55,7 +55,9 @@ de:
     club: Verein
     relaystarter: Teamstartnummer
     event: Veranstaltung
-    transpondrid: TransponderId
+    transponderid: Transponder-Id
+    relaystarttime: Staffel-Startzeit
+    starttime: Startzeit
 
   activerecord:
     models:
