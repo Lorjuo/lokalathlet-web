@@ -1,51 +1,47 @@
 <dl class="dl-horizontal">
-  <dt>Club(Staffelname):</dt>
+  <dt>Verein (Staffelname):</dt>
   <dd><%= @relay.club %></dd>
 
-  <dt>Event:</dt>
+  <dt>Veranstaltung:</dt>
   <dd><%= @relay.event %></dd>
 
-  <dt>Relay Starter:</dt>
+  <dt>Staffel-Starternummer:</dt>
   <dd><%= @relay.relaystarter %></dd>
+
+  <dt>Staffel-Teamgröße:</dt>
+  <dd><%= @relay.relaytmsize %></dd>
 
   <dt>Startzeit:</dt>
   <dd><%= @relay.relaystarttime %></dd>
 </dl>
 
-<% @relay.athlets.each do |athlet| %>
+<table class="table table-bordered table-striped datatable searchable">
+  <thead>
+  <tr>
+    <th>Starternummer</th>
+    <th>Name</th>
+    <th>Geburtsjahr</th>
+    <th>Geschlecht</th>
+    <th>Staffel-Teilnehmer</th>
+    <th>Transponder-Id</th>
+    <th>Startzeit</th>
+  </tr>
+  </thead>
 
-  <dl class="dl-horizontal">
-    <dt>Starter:</dt>
-    <dd><%= athlet.starter %></dd>
-
-    <dt>Firstname:</dt>
-    <dd><%= athlet.firstname %></dd>
-
-    <dt>Surname:</dt>
-    <dd><%= athlet.surname %></dd>
-
-    <dt>Birthday:</dt>
-    <dd><%= athlet.birthday %></dd>
-
-    <dt>Sex:</dt>
-    <dd><%= athlet.sex %></dd>
-
-    <dt>Relay Team Size:</dt>
-    <dd><%= athlet.relaytmsize %></dd>
-
-    <dt>Relay Starter:</dt>
-    <dd><%= athlet.relaystarter %></dd>
-
-    <dt>Relay Team Member:</dt>
-    <dd><%= athlet.relaytm %></dd>
-
-    <dt>Transponder Id:</dt>
-    <dd><%= athlet.transponderid %></dd>
-
-    <dt>Startzeit:</dt>
-    <dd><%= athlet.starttime %></dd>
-  </dl>
-<% end %>
+  <tbody>
+  <% @relay.athlets.each do |athlet| %>
+      <tr>
+        <td><%= athlet.starter %></td>
+        <td><%= athlet.name %></td>
+        <td><%= athlet.birthday %></td>
+        <td><%= athlet.sex %></td>
+        <td><%= athlet.relaytm %></td>
+        <td><%= athlet.transponderid %></td>
+        <td><%= athlet.starttime %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_relay_path(:id => @relay.relaystarter) %> |
 <%= link_to 'Back', relays_path %>
