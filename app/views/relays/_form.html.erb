@@ -22,7 +22,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-primary">
-        <div class="panel-heading">Relay</div>
+        <div class="panel-heading">Staffel</div>
         <div class="panel-body">
           <%= f.error_notification %>
 
@@ -32,7 +32,9 @@
             <%#= f.input :event %>
             <%= f.input :event,:collection => Event.where(:team_size => @relay.relaytmsize).where(:active => true).order(:name => :asc),:label_method => :name,:value_method => :name ,:include_blank => false %>
             <%= f.input :relaystarter %>
+            <%= f.input :relaystarttime %>
             <%= f.input :relaytmsize, :as => :hidden %>
+
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@ class Relay < ActiveRecord::Base
   column :event, :string
   column :relaystarter, :integer
   column :relaytmsize, :integer
+  column :relaystarttime, :string
 
 
   validates :club, :presence => true, length: { minimum: 3 }
@@ -20,16 +21,13 @@ class Relay < ActiveRecord::Base
   after_initialize :build_athlets
 
   #attr_accessible :club, :event, :relaystarter, :relaytm, :athlets_attributes
-
   #def id
   #  @id ||= 1
   #end
- 
-
+  
   def self.allowed_attributes
     ['club', 'event', 'relaystarter', 'relaytmsize']
   end
-
 
   def self.find(id)
     athlets = Athlet.where(:relaystarter => id)
@@ -37,6 +35,7 @@ class Relay < ActiveRecord::Base
     if athlets
       puts athlets.first.attributes
       relay = Relay.new(athlets.first.attributes.slice(*Relay.allowed_attributes).merge({:new_record => false}))
+      pp relay
     else
       nil
     end
@@ -78,6 +77,11 @@ class Relay < ActiveRecord::Base
         athlet.relaytm = index
         if athlet.transponderid.blank?
           athlet.transponderid = athlet.starter;
+        end
+        if athlet.starttime.blank?
+          if !self.relaystarttime.blank?
+              athlet.starttime = self.relaystarttime
+          end
         end
         athlet.save
         index = index + 1

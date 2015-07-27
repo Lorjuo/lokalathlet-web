@@ -12,6 +12,7 @@ class CreateAthlets < ActiveRecord::Migration
       t.integer :relaystarter
       t.integer :relaytmsize
       t.string :transponderid
+      t.string :starttime
 
       t.timestamps
     end

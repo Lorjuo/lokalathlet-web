@@ -35,9 +35,10 @@
             <th>Sex</th>
             <th>Club</th>
             <th>Event</th>
-            <th>Relaytm</th>
-            <th>Relaystarter</th>
-            <th>TransponderId</th>
+            <th>Relay Team Member</th>
+            <th>Relay Starter</th>
+            <th>Transponder Id</th>
+            <th>Start Time</th>
             <th class="no-sort"></th>
           </tr>
           </thead>
@@ -54,6 +55,7 @@
                 <td><%= athlet.relaytm %></td>
                 <td><%= athlet.relaystarter %></td>
                 <td><%= athlet.transponderid %></td>
+                <td><%= athlet.starttime %></td>
                 <td>
                   <%= link_to edit_athlet_path(athlet), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
                       <%= tag :span, :class => "glyphicon glyphicon-edit" %>
