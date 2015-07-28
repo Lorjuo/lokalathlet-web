@@ -2,47 +2,62 @@
   <h1>Staffeln</h1>
 </div>
 
-<% Event.where.not(:team_size => 1).where(:active => true).each do |event| %>
-  <div class="section">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <div class="panel-title">
-          <%= event.name %>
+<ul class="nav nav-tabs" role="tablist">
+  <% events = Event.where.not(:team_size => 1).where(:active => true) %>
+  <%# debugger %>
+  <% session[:event] = Event.first.name if session[:event].nil? %>
+  <% events.each do |event| %>
+      <li class="<%= (event.name == session[:event]) ? 'active' : '' %>">
+        <a href="#<%= event.name %>" role="tab" data-toggle="tab"><%= event.name %></a></li>
+  <% end %>
+</ul>
+
+<div class="tab-content">
+  <% active = true %>
+  <% Event.where.not(:team_size => 1).where(:active => true).each do |event| %>
+      <div class="tab-pane <%= (event.name == session[:event]) ? 'active' : '' %>" id="<%= event.name %>">
+        <% active = false %>
+        <!-- <div class="section"> -->
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <div class="panel-title">
+              <%= event.name %>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <table class="table table-bordered table-striped datatable searchable">
-      <thead>
-        <tr>
-          <th>Teamnummer</th>
-          <th>Verein</th>
-          <th>Veranstaltung</th>
-          <th>Teamgröße</th>
-          <th class="no-sort"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% Relay.event(event.name).each do |relay| %>
-        <%# debugger %>
+        <table class="table table-bordered table-striped datatable searchable">
+          <thead>
           <tr>
-            <td><%= relay.relaystarter %></td>
-            <td><%= link_to relay.club, relay_path(:id => relay.relaystarter) %></td>
-            <td><%= relay.event %></td>
-            <td><%= relay.relaytmsize %></td>
-            <td>
-              <%= link_to edit_relay_path(:id => relay.relaystarter), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
-                <%= tag :span, :class => "glyphicon glyphicon-edit" %>
-              <% end %>
-              <%= link_to relay_path(:id => relay.relaystarter), :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
-                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
-              <% end %>
-            </td>
+            <th>Staffel-Startnummer</th>
+            <th>Verein</th>
+            <th>Veranstaltung</th>
+            <th>Teamgröße</th>
+            <th class="no-sort"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= link_to 'Neues Team anmelden', new_relay_path(:event => event.name), :class => 'btn btn-default' %>
-  </div>
-<% end %>
+          </thead>
+
+          <tbody>
+          <% Relay.event(event.name).each do |relay| %>
+              <%# debugger %>
+              <tr>
+                <td><%= relay.relaystarter %></td>
+                <td><%= link_to relay.club, relay_path(:id => relay.relaystarter) %></td>
+                <td><%= relay.event %></td>
+                <td><%= relay.relaytmsize %></td>
+                <td>
+                  <%= link_to edit_relay_path(:id => relay.relaystarter), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+                      <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+                  <% end %>
+                  <%= link_to relay_path(:id => relay.relaystarter), :title => t("general.destroy"), data: {confirm: t('general.are_you_sure'), :toggle => "tooltip"}, method: :delete do %>
+                      <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%= link_to 'Neues Team anmelden', new_relay_path(:event => event.name), :class => 'btn btn-default' %>
+      </div>
+  <% end %>
+</div>
