@@ -1,4 +1,4 @@
-# Web-Client Application based on Ruby on Rails #
+# Web-Client Desktop Application based on Ruby on Rails #
 
 ### What is this repository for? ###
 
