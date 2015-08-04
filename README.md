@@ -1,2 +1,2 @@
-lokalathlet-web
+lokalathlet-desktop
 ===============
