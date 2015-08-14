@@ -25,11 +25,13 @@ class RelaysController < ApplicationController
   def new
     event = Event.where(:name => params[:event]).first
     @relay = Relay.new(:relaytmsize => event.team_size, :event => event.name)
+    session[:eventRelay] = params[:eventRelay]
   end
 
 
   def edit
     pp @relay
+    session[:eventRelay] = params[:eventRelay]
   end
 
 

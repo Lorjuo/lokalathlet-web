@@ -5,9 +5,9 @@
 <ul class="nav nav-tabs" role="tablist">
   <% events = Event.where.not(:team_size => 1).where(:active => true) %>
   <%# debugger %>
-  <% session[:event] = Event.first.name if session[:event].nil? %>
+  <% session[:eventRelay] = Event.first.name if session[:eventRelay].nil? %>
   <% events.each do |event| %>
-      <li class="<%= (event.name == session[:event]) ? 'active' : '' %>">
+      <li class="<%= (event.name == session[:eventRelay]) ? 'active' : '' %>">
         <a href="#<%= event.name %>" role="tab" data-toggle="tab"><%= event.name %></a></li>
   <% end %>
 </ul>
@@ -15,7 +15,7 @@
 <div class="tab-content">
   <% active = true %>
   <% Event.where.not(:team_size => 1).where(:active => true).each do |event| %>
-      <div class="tab-pane <%= (event.name == session[:event]) ? 'active' : '' %>" id="<%= event.name %>">
+      <div class="tab-pane <%= (event.name == session[:eventRelay]) ? 'active' : '' %>" id="<%= event.name %>">
         <% active = false %>
         <!-- <div class="section"> -->
         <div class="panel panel-primary">
