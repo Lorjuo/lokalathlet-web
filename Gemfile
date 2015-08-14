@@ -2,8 +2,11 @@ source 'https://rubygems.org'
 
 gem 'activerecord-tableless', '~> 1.0', git: 'git://github.com/david135/activerecord-tableless.git'
 
+# https://github.com/rails/rails/issues/18739
+gem 'activerecord', '~> 4.1.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '~> 4.1.0'
 
 # Database
 # gem 'mysql2'

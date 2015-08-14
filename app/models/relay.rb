@@ -1,5 +1,5 @@
-class Relay < ActiveRecord::Base
-  has_no_table
+class Relay < Tableless
+  #has_no_table
   has_many :athlets, :primary_key => :relaystarter, :foreign_key => :relaystarter, :class_name => RelayMember
   accepts_nested_attributes_for :athlets
 
@@ -49,7 +49,12 @@ class Relay < ActiveRecord::Base
 
   def self.event(name)
     athlets = Athlet.where(:event => name).group(:relaystarter).all
-    athlets.map{ |athlet| Relay.new(athlet.attributes.slice(*Relay.allowed_attributes).merge({:new_record => false})) }
+    #merged = athlet.attributes.slice(Relay.allowed_attributes).merge({:new_record => false})
+    #athlets.map{ |athlet| Relay.new(merged) }
+    athlets.map do |athlet|
+      merged = athlet.attributes.slice(*Relay.allowed_attributes).merge({:new_record => false})
+      Relay.new(merged)
+    end
   end
 
   def to_param

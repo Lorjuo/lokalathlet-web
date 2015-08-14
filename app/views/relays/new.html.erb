@@ -2,6 +2,6 @@
   <h1 id="navbar">Neue Staffel anmelden</h1>
 </div>
 
-<%= render 'form' %>
+<%= render 'form',  :formurl => "/relays/new", :formmethod => :post %>
 
 <%= link_to 'Zurück', relays_path %>
