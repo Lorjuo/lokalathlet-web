@@ -2,7 +2,8 @@
   <h1 id="navbar">Staffel bearbeiten</h1>
 </div>
 <% pp @replay %>
-<%= render 'form', :formurl => "/relays/#{@relay.relaystarter}", :formmethod => :put %>
+<%#= render 'form', :formurl => "/relays/#{@relay.relaystarter}", :formmethod => :put %>
+<%= render 'form' %>
 
 <%= link_to 'Details', relay_path(:id => @relay.relaystarter) %> |
 <%= link_to 'Zurück', relays_path %>
