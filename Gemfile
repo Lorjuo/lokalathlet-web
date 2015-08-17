@@ -49,8 +49,11 @@ gem 'sass-rails', '~> 5.0'
 
 # Excel
 gem 'to_xls-rails'
-#gem 'roo'
-gem 'roo-xls', git: 'git://github.com/roo-rb/roo-xls.git'
+
+# gem 'roo'
+# gem 'roo', '~> 2.1.0'
+gem 'roo-xls'
+# gem 'roo-xls', git: 'git://github.com/roo-rb/roo-xls.git'
 # gem 'writeexcel'
 
 # Forms

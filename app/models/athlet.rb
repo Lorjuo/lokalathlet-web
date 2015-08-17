@@ -29,7 +29,7 @@ class Athlet < ActiveRecord::Base
   require 'to_xls-rails'
 
   # Validation
-  validates :starter, :presence => true, :inclusion => 0..10000 # TODO: restrict this
+  validates :starter, :presence => true, :inclusion => 0..99999 # TODO: restrict this
   #http://stackoverflow.com/questions/3276110/rails-3-validation-on-uniqueness-on-multiple-attributes
   validates :starter, :uniqueness => {:scope => [:event]}
   validates :firstname, :presence => true, length: { minimum: 3 }
@@ -149,9 +149,11 @@ class Athlet < ActiveRecord::Base
   def self.open_spreadsheet(file)
     if !file.blank?
       case File.extname(file.original_filename)
-        when ".csv" then Roo::Csv.new(file.path, nil, :ignore)
-        when ".xls" then Roo::Excel.new(file.path)
-        when ".xlsx" then Roo::Excelx.new(file.path)
+        when ".csv" then Roo::CSV.new(file.path, nil, :ignore)
+        when ".xls" then Roo::Excel.new(file.path, file_warning: :ignore)
+        when ".xlsx" then Roo::Excelx.new(file.path, file_warning: :ignore)
+        #when ".xls" then Roo::Excel.new(file.path)
+        #when ".xlsx" then Roo::Excelx.new(file.path)
         else raise "Unknown file type: #{file.original_filename}"
       end
     else

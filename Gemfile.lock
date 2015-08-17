@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Compass/compass-rails.git
-  revision: 3e88f991150ffa39b0a539dffb3326248d18e6ad
+  revision: d600de4a6c5870613aac63f32491da4771a3c982
   specs:
-    compass-rails (2.0.4)
+    compass-rails (2.0.5)
       compass (~> 1.0.0)
       sass-rails (< 5.1)
       sprockets (< 2.13)
@@ -21,15 +21,6 @@ GIT
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
-
-GIT
-  remote: git://github.com/roo-rb/roo-xls.git
-  revision: 0a5ef88c8312c48b1a97cefa9e5f21e9a7f64209
-  specs:
-    roo-xls (1.0.0)
-      nokogiri
-      roo (>= 2.0.0beta1, < 3)
-      spreadsheet (> 0.9.0)
 
 GIT
   remote: git://github.com/rweng/jquery-datatables-rails.git
@@ -127,7 +118,7 @@ GEM
       sass (>= 3.2, < 3.5)
     debug_inspector (0.0.2)
     erubis (2.7.0)
-    execjs (2.5.2)
+    execjs (2.6.0)
     ffi (1.9.10)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
@@ -203,6 +194,10 @@ GEM
     roo (2.1.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
+    roo-xls (1.0.0)
+      nokogiri
+      roo (>= 2.0.0beta1, < 3)
+      spreadsheet (> 0.9.0)
     ruby-ole (1.2.11.8)
     rubyzip (1.1.7)
     sass (3.4.16)
@@ -274,7 +269,7 @@ DEPENDENCIES
   rails (~> 4.1.0)
   rails3-jquery-autocomplete
   rails_12factor
-  roo-xls!
+  roo-xls
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form (~> 3.1.0.rc1)!
