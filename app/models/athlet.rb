@@ -52,7 +52,8 @@ class Athlet < ActiveRecord::Base
     if !datestr.blank? && datestr.size > 3
       datestr = datestr[0,4]
     else
-      datestr = "2015"
+      logger.warn "setting initial date, because of any error: " + value
+      datestr = '2015'
     end
     self[:birthday] = Date.new(datestr.to_i,1,1)
   end
