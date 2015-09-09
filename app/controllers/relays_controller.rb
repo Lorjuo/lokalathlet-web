@@ -30,7 +30,6 @@ class RelaysController < ApplicationController
 
 
   def edit
-    pp @relay
     session[:eventRelay] = params[:eventRelay]
   end
 
