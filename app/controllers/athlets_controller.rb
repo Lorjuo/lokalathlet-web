@@ -29,7 +29,12 @@ class AthletsController < ApplicationController
       p params[:event]
       @athlets = Athlet.order(:event).order(:starter).where(:event => params[:event])
     else
-      @athlets = Athlet.order(:event).order(:starter).all
+      if params[:transponderid]
+        p params[:transponderid]
+        @athlets = Athlet.order(:event).order(:starter).where(:transponderid => params[:transponderid])
+      else
+        @athlets = Athlet.order(:event).order(:starter).all
+      end
     end
 
     #@athlets = Athlet.where(:relaytmsize => 1).all
@@ -44,12 +49,12 @@ class AthletsController < ApplicationController
       format.xls {
         #response.headers["Content-Disposition"] = 'attachement; filename='+Time.now.strftime("%Y%m%dT%H%M%S")+'.txt'
         send_data @athlets.to_xls(
-        #:except => [:created_at, :updated_at]
-        :only => Athlet::allowed_attributes.map { |x| x.to_sym },
-        :header => true,
-        :header_columns => Athlet::allowed_attributes,
-        #:prepend => [["Col 0, Row 0", "Col 1, Row 0"], ["Col 0, Row 1"]]
-      ), :filename => Time.now.strftime("%Y%m%dT%H%M%S")+'.xls' }
+                      #:except => [:created_at, :updated_at]
+                      :only => Athlet::allowed_attributes.map { |x| x.to_sym },
+                      :header => true,
+                      :header_columns => Athlet::allowed_attributes,
+                      #:prepend => [["Col 0, Row 0", "Col 1, Row 0"], ["Col 0, Row 1"]]
+                  ), :filename => Time.now.strftime("%Y%m%dT%H%M%S")+'.xls' }
 
       format.json { render json: @athlets }
       format.xml { render xml: @athlets }
@@ -136,7 +141,7 @@ class AthletsController < ApplicationController
       value[:relaystarter] = params[:athlet][:relaystarter]
       value[:event] = params[:athlet][:event]
       value[:club] = params[:athlet][:club]
-      
+
       @athlets << Athlet.new(check_permission(value))
     end
 
@@ -180,7 +185,7 @@ class AthletsController < ApplicationController
   def update_multiple
     athlets_attributes = params[:athlets] # make a temporary copy
     athlets_attributes.each do |key, value|
-    #athlets_attributes.each do |value|
+      #athlets_attributes.each do |value|
       value[:starter] = params[:athlet][:starter]
       value[:event] = params[:athlet][:event]
       value[:club] = params[:athlet][:club]
@@ -222,17 +227,17 @@ class AthletsController < ApplicationController
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_athlet
-      @athlet = Athlet.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_athlet
+    @athlet = Athlet.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def athlet_params
-      params.require(:athlet).permit(:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def athlet_params
+    params.require(:athlet).permit(:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime)
+  end
 
-    def check_permission(attributes)
-      attributes.permit(:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime)
-    end
+  def check_permission(attributes)
+    attributes.permit(:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime)
+  end
 end
