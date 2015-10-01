@@ -15,7 +15,7 @@
       <tr>
         <td><%= event.name %></td>
         <td><%= event.team_size %></td>
-        <td><%= event.active ? 'ja' : 'nein' %></td>
+        <td><%= event.active  %></td>
         <td><%= link_to 'Details', event %></td>
         <td><%= link_to 'Bearbeiten', edit_event_path(event) %></td>
         <td><%= link_to 'Löschen', event, method: :delete, data: { confirm: 'Sind sie sich sicher?' } %></td>

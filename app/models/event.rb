@@ -12,11 +12,11 @@
 class Event < ActiveRecord::Base
   validates :team_size, :presence => :true
 
-  after_initialize :set_defaults
+#  after_initialize :set_defaults
 
 
-  def set_defaults
-    self.active ||= true
-  end
+#  def set_defaults
+#    self.active ||= true
+#  end
 
 end

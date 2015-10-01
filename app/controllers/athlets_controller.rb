@@ -31,7 +31,8 @@ class AthletsController < ApplicationController
     else
       if params[:transponderid]
         p params[:transponderid]
-        @athlets = Athlet.order(:event).order(:starter).where(:transponderid => params[:transponderid])
+        @athlets = Athlet.order(:event).order(:starter).where(:transponderid => params[:transponderid]).all
+        #@athlets = Athlet.joins(:event).where(events: {active: true}).order(:event).order(:starter).where(:transponderid => params[:transponderid]).all
       else
         @athlets = Athlet.order(:event).order(:starter).all
       end

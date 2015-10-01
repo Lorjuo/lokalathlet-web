@@ -5,7 +5,10 @@
   <dd><%= @event.name %></dd>
 
   <dt>Teamgröße:</dt>
-  <dd><%= @event.team_size %></dd>
+  <dd><%= @event.team_size %>
+
+  <dt>Aktiv:</dt>
+  <dd><%= @event.active %></dd>
 </dl>
 
 <%= link_to 'Bearbeiten', edit_event_path(@event) %> |
