@@ -58,6 +58,7 @@ class AthletsController < ApplicationController
                   ), :filename => Time.now.strftime("%Y%m%dT%H%M%S")+'.xls' }
 
       format.json { render json: @athlets }
+      #format.json { render json: @athlets.to_json(:except => :event) }
       format.xml { render xml: @athlets }
     end
   end
