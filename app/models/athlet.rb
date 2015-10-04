@@ -21,7 +21,7 @@
 class Athlet < ActiveRecord::Base
 
   # dadurch ändert sich auch das Ergebnisobjekt
-  # belongs_to :event, :foreign_key => 'event', :primary_key => 'name'
+  belongs_to :event, :foreign_key => 'event', :primary_key => 'name'
 
   def self.allowed_attributes
     ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'event', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime']

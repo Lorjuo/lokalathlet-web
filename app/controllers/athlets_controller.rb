@@ -31,8 +31,8 @@ class AthletsController < ApplicationController
     else
       if params[:transponderid]
         p params[:transponderid]
-        @athlets = Athlet.order(:event).order(:starter).where(:transponderid => params[:transponderid]).all
-        #@athlets = Athlet.joins(:event).where(events: {active: true}).order(:event).order(:starter).where(:transponderid => params[:transponderid]).all
+        #@athlets = Athlet.order(:event).order(:starter).where(:transponderid => params[:transponderid]).all
+        @athlets = Athlet.joins(:event).where(events: {active: true}).order(:event).order(:starter).where(:transponderid => params[:transponderid]).all
       else
         @athlets = Athlet.order(:event).order(:starter).all
       end
@@ -57,7 +57,8 @@ class AthletsController < ApplicationController
                       #:prepend => [["Col 0, Row 0", "Col 1, Row 0"], ["Col 0, Row 1"]]
                   ), :filename => Time.now.strftime("%Y%m%dT%H%M%S")+'.xls' }
 
-      format.json { render json: @athlets }
+      format.json
+      #format.json { render json: @athlets }
       #format.json { render json: @athlets.to_json(:except => :event) }
       format.xml { render xml: @athlets }
     end
