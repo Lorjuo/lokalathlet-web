@@ -57,7 +57,7 @@ gem 'roo-xls'
 # gem 'writeexcel'
 
 # Forms
-gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
+gem 'simple_form', '~> 3.2.1', github: 'plataformatec/simple_form'
 # http://blog.plataformatec.com.br/2014/04/bootstrap-3-support-for-simple-form/
 
 # Input Elements

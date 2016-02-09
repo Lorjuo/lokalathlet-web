@@ -16,11 +16,11 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/simple_form.git
-  revision: eac1e0108e6c95e291c2065e7005e0cbcb4c2bac
+  revision: ac63da0f0b38df82385493f25f649e320b0acb4a
   specs:
-    simple_form (3.1.0)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
 
 GIT
   remote: git://github.com/rweng/jquery-datatables-rails.git
@@ -272,7 +272,7 @@ DEPENDENCIES
   roo-xls
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  simple_form (~> 3.1.0.rc1)!
+  simple_form (~> 3.2.1)!
   spring
   sqlite3
   to_xls-rails
