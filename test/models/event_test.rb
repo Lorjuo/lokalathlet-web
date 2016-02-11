@@ -1,9 +1,9 @@
 require "test_helper"
 
 describe Event do
-  let(:event) { Event.new }
+  let(:eventname) { Event.new }
 
   it "must be valid" do
-    event.must_be :valid?
+    eventname.must_be :valid?
   end
 end

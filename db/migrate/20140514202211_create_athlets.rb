@@ -7,7 +7,7 @@ class CreateAthlets < ActiveRecord::Migration
       t.date :birthday
       t.string :sex
       t.string :club
-      t.string :event
+      t.string :eventname
       t.integer :relaytm
       t.integer :relaystarter
       t.integer :relaytmsize

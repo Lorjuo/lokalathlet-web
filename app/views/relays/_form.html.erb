@@ -31,7 +31,7 @@
             <%= f.input :club, :input_html => {
               :data => { :autocomplete => autocomplete_club_athlets_path } } %>
             <%#= f.input :event %>
-            <%= f.input :event,:collection => Event.where(:team_size => @relay.relaytmsize).where(:active => true).order(:name => :asc),:label_method => :name,:value_method => :name ,:include_blank => false %>
+            <%= f.input :eventname, :collection => Event.where(:team_size => @relay.relaytmsize).where(:active => true).order(:name => :asc), :label_method => :name, :value_method => :name , :include_blank => false %>
             <%= f.input :relaystarter %>
             <%= f.input :relaystarttime %>
             <%= f.input :relaytmsize, :as => :hidden %>

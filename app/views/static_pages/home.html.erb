@@ -37,7 +37,7 @@
             <a href="/athlets">
               <%= event.name %>
               <span class="badge badge-info pull-right">
-                <%= Athlet.where(:event => event.name).distinct.count %>
+                <%= Athlet.where(:eventname => event.name).distinct.count %>
               </span>
             </a>
           </li>
@@ -62,7 +62,7 @@
             <a href="/relays">
               <%= event.name %>
               <span class="badge badge-success pull-right">
-                <%= Athlet.where(:event => event.name).distinct.count(:relaystarter) %>
+                <%= Athlet.where(:eventname => event.name).distinct.count(:relaystarter) %>
               </span>
             </a>
           </li>

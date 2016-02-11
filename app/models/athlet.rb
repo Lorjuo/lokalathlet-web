@@ -21,7 +21,7 @@
 class Athlet < ActiveRecord::Base
 
   # dadurch ändert sich auch das Ergebnisobjekt
-  belongs_to :event, :foreign_key => 'event', :primary_key => 'name'
+  belongs_to :event, :foreign_key => 'eventname', :primary_key => 'name'
 
   def self.allowed_attributes
     ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'event', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime']
@@ -40,7 +40,7 @@ class Athlet < ActiveRecord::Base
   validates :birthday, :presence => true, :inclusion => 1900..2100
   validates :sex, :presence => true
   #validates :club, :allow_blank => :true, length: { minimum: 3 }
-  validates :event, :presence => true
+  validates :eventname, :presence => true
 
   # Getter / Setter
   # http://stackoverflow.com/questions/2033069/convert-data-when-putting-them-into-a-database-using-active-record
@@ -116,7 +116,7 @@ class Athlet < ActiveRecord::Base
 
       # Add event
       # http://stackoverflow.com/questions/18082778/rails-checking-if-a-record-exists-in-database
-      if athlet.event.present? && Event.where(:name => athlet.event).blank?
+      if athlet.eventname.present? && Event.where(:name => athlet.event).blank?
         Event.create(:name => athlet.event, :team_size => athlet.relaytmsize)
       end
     end

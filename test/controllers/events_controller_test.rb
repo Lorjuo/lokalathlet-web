@@ -2,7 +2,7 @@ require "test_helper"
 
 describe EventsController do
 
-  let(:event) { events :one }
+  let(:eventname) { events :one }
 
   it "gets index" do
     get :index
@@ -17,30 +17,30 @@ describe EventsController do
 
   it "creates event" do
     assert_difference('Event.count') do
-      post :create, event: { name: @event.name, team_size: @event.team_size }
+      post :create, eventname: {name: @event.name, team_size: @event.team_size }
     end
 
-    assert_redirected_to event_path(assigns(:event))
+    assert_redirected_to event_path(assigns(:eventname))
   end
 
   it "shows event" do
-    get :show, id: event
+    get :show, id: eventname
     assert_response :success
   end
 
   it "gets edit" do
-    get :edit, id: event
+    get :edit, id: eventname
     assert_response :success
   end
 
   it "updates event" do
-    put :update, id: event, event: { name: @event.name, team_size: @event.team_size }
-    assert_redirected_to event_path(assigns(:event))
+    put :update, id: eventname, eventname: {name: @event.name, team_size: @event.team_size }
+    assert_redirected_to event_path(assigns(:eventname))
   end
 
   it "destroys event" do
     assert_difference('Event.count', -1) do
-      delete :destroy, id: event
+      delete :destroy, id: eventname
     end
 
     assert_redirected_to events_path

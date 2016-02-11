@@ -23,8 +23,8 @@ class RelaysController < ApplicationController
 
 
   def new
-    event = Event.where(:name => params[:event]).first
-    @relay = Relay.new(:relaytmsize => event.team_size, :event => event.name)
+    event = Event.where(:name => params[:eventname]).first
+    @relay = Relay.new(:relaytmsize => event.team_size, :eventname => event.name)
     session[:eventRelay] = params[:eventRelay]
   end
 
@@ -75,7 +75,7 @@ class RelaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def relay_params
-      params.require(:relay).permit(:club, :event, :relaytm, :relaystarter, :relaytmsize, :relaystarttime,
-        :athlets_attributes => [:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter, :relaytmsize, :id, :transponderid, :starttime])
+      params.require(:relay).permit(:club, :eventname, :relaytm, :relaystarter, :relaytmsize, :relaystarttime,
+                                    :athlets_attributes => [:starter, :firstname, :surname, :birthday, :sex, :club, :eventname, :relaytm, :relaystarter, :relaytmsize, :id, :transponderid, :starttime])
     end
 end

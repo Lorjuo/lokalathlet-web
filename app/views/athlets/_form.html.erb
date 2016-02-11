@@ -32,7 +32,7 @@
             <%= f.input :club, :input_html => { :class => :club,
               :data => { :autocomplete => autocomplete_club_athlets_path } } %>
             <%#= f.input :event %>
-            <%= f.input :event,
+            <%= f.input :eventname,
             :as => :select,
             :collection => Event.where(:team_size => 1).where(:active => true).order(:name => :asc),
             :label_method => :name,

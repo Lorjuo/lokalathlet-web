@@ -25,16 +25,16 @@ class AthletsController < ApplicationController
 
 
   def index
-    if params[:event]
-      p params[:event]
-      @athlets = Athlet.order(:event).order(:starter).where(:event => params[:event])
+    if params[:eventname]
+      p params[:eventname]
+      @athlets = Athlet.order(:eventname).order(:starter).where(:eventname => params[:eventname])
     else
       if params[:transponderid]
         p params[:transponderid]
         #@athlets = Athlet.order(:event).order(:starter).where(:transponderid => params[:transponderid]).all
-        @athlets = Athlet.joins(:event).where(events: {active: true}).order(:event).order(:starter).where(:transponderid => params[:transponderid]).all
+        @athlets = Athlet.joins(:event).where(events: {active: true}).order(:eventname).order(:starter).where(:transponderid => params[:transponderid]).all
       else
-        @athlets = Athlet.order(:event).order(:starter).all
+        @athlets = Athlet.order(:eventname).order(:starter).all
       end
     end
 
@@ -74,9 +74,9 @@ class AthletsController < ApplicationController
   end
 
   def suggestions
-    #@athlets = Athlet.select("athlets.*, GROUP_CONCAT(athlets.event SEPARATOR ', ') AS events")
+    #@athlets = Athlet.select("athlets.*, GROUP_CONCAT(athlets.eventname SEPARATOR ', ') AS events")
     # sqlite variante
-    @athlets = Athlet.select("athlets.*, GROUP_CONCAT(athlets.event, ', ') AS events")
+    @athlets = Athlet.select("athlets.*, GROUP_CONCAT(athlets.eventname, ', ') AS events")
     @athlets = @athlets.group("firstname, surname, sex, birthday").limit(5)
     @athlets = @athlets.where("firstname LIKE (?)", "%#{params[:firstname]}%") if params[:firstname].present?
     @athlets = @athlets.where("surname LIKE (?)", "%#{params[:surname]}%") if params[:surname].present?
@@ -90,9 +90,9 @@ class AthletsController < ApplicationController
 
 
   def new
-    @athlet = Athlet.new(:event => params[:event])
+    @athlet = Athlet.new(:eventname => params[:event])
     @athlet.relaytmsize = 1
-    session[:event] = params[:event]
+    session[:eventname] = params[:eventname]
   end
 
 
@@ -104,7 +104,7 @@ class AthletsController < ApplicationController
 
 
   def edit
-    session[:event] = params[:event]
+    session[:eventname] = params[:eventname]
   end
 
 
@@ -142,7 +142,7 @@ class AthletsController < ApplicationController
     athlets_attributes.each do |value|
       value[:starter] = params[:athlet][:starter]
       value[:relaystarter] = params[:athlet][:relaystarter]
-      value[:event] = params[:athlet][:event]
+      value[:eventname] = params[:athlet][:eventname]
       value[:club] = params[:athlet][:club]
 
       @athlets << Athlet.new(check_permission(value))
@@ -190,7 +190,7 @@ class AthletsController < ApplicationController
     athlets_attributes.each do |key, value|
       #athlets_attributes.each do |value|
       value[:starter] = params[:athlet][:starter]
-      value[:event] = params[:athlet][:event]
+      value[:eventname] = params[:athlet][:eventname]
       value[:club] = params[:athlet][:club]
     end
     @athlets = Athlet.update(athlets_attributes.keys, athlets_attributes.values)
@@ -237,10 +237,10 @@ class AthletsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def athlet_params
-    params.require(:athlet).permit(:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime)
+    params.require(:athlet).permit(:starter, :firstname, :surname, :birthday, :sex, :club, :eventname, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime)
   end
 
   def check_permission(attributes)
-    attributes.permit(:starter, :firstname, :surname, :birthday, :sex, :club, :event, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime)
+    attributes.permit(:starter, :firstname, :surname, :birthday, :sex, :club, :eventname, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime)
   end
 end

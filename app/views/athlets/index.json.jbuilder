@@ -6,7 +6,7 @@ json.array! @athlets do |athlet|
   json.birthday athlet.birthday
   json.sex athlet.sex
   json.club athlet.club
-  json.event athlet.event.name
+  json.event athlet.eventname
   json.relaytm athlet.relaytm
   json.relaystarter athlet.relaystarter
   json.relaytmsize athlet.relaytmsize

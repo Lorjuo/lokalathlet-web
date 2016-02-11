@@ -5,9 +5,9 @@
 <ul class="nav nav-tabs" role="tablist">
   <% events = Event.where(:team_size => 1).where(:active => true) %>
   <%# debugger %>
-  <% session[:event] = Event.first.name if session[:event].nil? %>
+  <% session[:eventname] = Event.first.name if session[:eventname].nil? %>
   <% events.each do |event| %>
-      <li class="<%= (event.name == session[:event]) ? 'active' : '' %>">
+      <li class="<%= (event.name == session[:eventname]) ? 'active' : '' %>">
         <a href="#<%= event.name %>" role="tab" data-toggle="tab"><%= event.name %></a></li>
   <% end %>
 </ul>
@@ -15,7 +15,7 @@
 <div class="tab-content">
   <% active = true %>
   <% Event.where(:team_size => 1).where(:active => true).each do |event| %>
-      <div class="tab-pane <%= (event.name == session[:event]) ? 'active' : '' %>" id="<%= event.name %>">
+      <div class="tab-pane <%= (event.name == session[:eventname]) ? 'active' : '' %>" id="<%= event.name %>">
         <% active = false %>
         <!-- <div class="section"> -->
         <div class="panel panel-primary">
@@ -44,14 +44,14 @@
           </thead>
 
           <tbody>
-          <% @athlets.where(:event => event.name).each do |athlet| %>
+          <% @athlets.where(:eventname => event.name).each do |athlet| %>
               <tr>
                 <td><%= athlet.starter %></td>
                 <td><%= link_to athlet.name, athlet %></td>
                 <td><%= athlet.birthday %></td>
                 <td><%= athlet.sex %></td>
                 <td><%= athlet.club %></td>
-                <td><%= athlet.event %></td>
+                <td><%= athlet.eventname %></td>
                 <td><%= athlet.relaytm %></td>
                 <td><%= athlet.relaystarter %></td>
                 <td><%= athlet.transponderid %></td>
@@ -69,7 +69,7 @@
           </tbody>
         </table>
 
-        <%= link_to 'Neuen Athleten anmelden', new_athlet_path(:event => event.name), :class => 'btn btn-default' %>
+        <%= link_to 'Neuen Athleten anmelden', new_athlet_path(:eventname => event.name), :class => 'btn btn-default' %>
       </div>
   <% end %>
 </div>

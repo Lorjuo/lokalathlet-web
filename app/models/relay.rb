@@ -7,26 +7,26 @@ class Relay < Tableless
   attr_accessor :new_record
 
   column :club, :string
-  column :event, :string
+  column :eventname, :string
   column :relaystarter, :integer
   column :relaytmsize, :integer
   column :relaystarttime, :string
 
 
   validates :club, :presence => true, length: { minimum: 3 }
-  validates :event, :presence => true
+  validates :eventname, :presence => true
   validates :relaystarter, :presence => true
 
   after_initialize :set_defaults
   after_initialize :build_athlets
 
-  #attr_accessible :club, :event, :relaystarter, :relaytm, :athlets_attributes
+  #attr_accessible :club, :eventname, :relaystarter, :relaytm, :athlets_attributes
   #def id
   #  @id ||= 1
   #end
   
   def self.allowed_attributes
-    ['club', 'event', 'relaystarter', 'relaytmsize']
+    ['club', 'eventname', 'relaystarter', 'relaytmsize']
   end
 
   def self.find(id)
@@ -47,7 +47,7 @@ class Relay < Tableless
   end
 
   def self.event(name)
-    athlets = Athlet.where(:event => name).group(:relaystarter).all
+    athlets = Athlet.where(:eventname => name).group(:relaystarter).all
     #merged = athlet.attributes.slice(Relay.allowed_attributes).merge({:new_record => false})
     #athlets.map{ |athlet| Relay.new(merged) }
     athlets.map do |athlet|
