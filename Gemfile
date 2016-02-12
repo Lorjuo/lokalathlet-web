@@ -123,7 +123,7 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.19'
   # gem 'pg'
 end
 
