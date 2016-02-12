@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140602140606) do
 
-  create_table "athlets", force: :cascade do |t|
+  create_table "athlets", force: true do |t|
     t.integer  "starter"
     t.string   "firstname"
     t.string   "surname"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140602140606) do
     t.datetime "updated_at"
   end
 
-  create_table "events", force: :cascade do |t|
+  create_table "events", force: true do |t|
     t.string   "name"
     t.integer  "team_size"
     t.boolean  "active",     default: true
