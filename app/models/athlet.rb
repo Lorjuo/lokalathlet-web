@@ -24,7 +24,7 @@ class Athlet < ActiveRecord::Base
   belongs_to :event, :foreign_key => 'eventname', :primary_key => 'name'
 
   def self.allowed_attributes
-    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'event', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime']
+    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'eventname', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime']
   end
 
   require 'csv'
@@ -81,12 +81,18 @@ class Athlet < ActiveRecord::Base
     end
   end
 
+  MAPPING = {
+      "event" => "eventname"
+  }
+
   def self.import(file)
 
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
+      # Convert the keys from the csv to match the database column names
+      row.keys.each { |k| row[ MAPPING[k] ] = row.delete(k) if MAPPING[k] }
       athlet = new #find_by_id(row["id"]) || new
       athlet.attributes = row.to_hash.slice(*self.allowed_attributes)
       athlet.id = nil
@@ -116,8 +122,8 @@ class Athlet < ActiveRecord::Base
 
       # Add event
       # http://stackoverflow.com/questions/18082778/rails-checking-if-a-record-exists-in-database
-      if athlet.eventname.present? && Event.where(:name => athlet.event).blank?
-        Event.create(:name => athlet.event, :team_size => athlet.relaytmsize)
+      if athlet.eventname.present? && Event.where(:name => athlet.eventname).blank?
+        Event.create(:name => athlet.eventname, :team_size => athlet.relaytmsize)
       end
     end
   end
