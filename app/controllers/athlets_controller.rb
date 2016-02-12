@@ -53,9 +53,9 @@ class AthletsController < ApplicationController
                       #:except => [:created_at, :updated_at]
                       :only => Athlet::allowed_attributes.map { |x| x.to_sym },
                       :header => true,
-                      :header_columns => Athlet::allowed_attributes,
+                      :header_columns => Athlet::allowed_attributes_xls,
                       #:prepend => [["Col 0, Row 0", "Col 1, Row 0"], ["Col 0, Row 1"]]
-                  ), :filename => Time.now.strftime("%Y%m%dT%H%M%S")+'.xls' }
+                  ), :filename => 'athlets_' + Time.now.strftime("%Y%m%dT%H%M%S")+'.xls' }
 
       format.json
       #format.json { render json: @athlets }

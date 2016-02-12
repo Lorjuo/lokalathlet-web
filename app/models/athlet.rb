@@ -26,6 +26,9 @@ class Athlet < ActiveRecord::Base
   def self.allowed_attributes
     ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'eventname', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime']
   end
+  def self.allowed_attributes_xls
+    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'event', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime']
+  end
 
   require 'csv'
   require 'to_xls-rails'
