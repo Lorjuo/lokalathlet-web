@@ -94,6 +94,7 @@ class Athlet < ActiveRecord::Base
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
+      # http://stackoverflow.com/questions/32168986/importing-records-from-csv-file-creates-completely-blank-rows-in-database
       # Convert the keys from the csv to match the database column names
       row.keys.each { |k| row[ MAPPING[k] ] = row.delete(k) if MAPPING[k] }
       athlet = new #find_by_id(row["id"]) || new
