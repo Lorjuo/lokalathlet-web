@@ -34,7 +34,7 @@ class Relay < Tableless
 
     if athlets
       puts athlets.first.attributes
-      relay = Relay.new(athlets.first.attributes.slice(*Relay.allowed_attributes).merge({:new_record => false}))
+      Relay.new(athlets.first.attributes.slice(*Relay.allowed_attributes).merge({:new_record => false}))
     else
       nil
     end

@@ -57,7 +57,11 @@ class Athlet < ActiveRecord::Base
     if !datestr.blank? && datestr.size > 3
       datestr = datestr[0,4]
     else
-      logger.warn "setting initial date, because of any error: " + value
+      if value.nil?
+        logger.warn 'setting initial date, because nil'
+      else
+        logger.warn 'setting initial date, because of any error: ' + value
+      end
       datestr = '2015'
     end
     self[:birthday] = Date.new(datestr.to_i,1,1)
@@ -170,7 +174,7 @@ class Athlet < ActiveRecord::Base
         else raise "Unknown file type: #{file.original_filename}"
       end
     else
-      raise "Select file first!"
+      raise 'Select file first!'
     end
   end
 end
