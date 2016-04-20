@@ -8,7 +8,8 @@
   <% session[:eventRelay] = Event.first.name if session[:eventRelay].nil? %>
   <% events.each do |event| %>
       <li class="<%= (event.name == session[:eventRelay]) ? 'active' : '' %>">
-        <a href="#<%= event.name %>" role="tab" data-toggle="tab"><%= event.name %></a></li>
+        <a href="#<%= event.name %>" role="tab" data-toggle="tab"><%= event.name %></a>
+      </li>
   <% end %>
 </ul>
 
