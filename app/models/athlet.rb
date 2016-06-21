@@ -40,7 +40,8 @@ class Athlet < ActiveRecord::Base
   validates :firstname, :presence => true, length: { minimum: 2 }
   validates :surname, :presence => true, length: { minimum: 2 }
   # validates :name, uniqueness: { scope: :year, message: "should happen once per year" }
-  validates :birthday, :presence => true, :inclusion => 1900..2100
+  # validates :birthday, :presence => true, :inclusion => 1900..2100
+  validates :birthday, :presence => true
   validates :sex, :presence => true
   #validates :club, :allow_blank => :true, length: { minimum: 3 }
   validates :eventname, :presence => true
@@ -49,22 +50,30 @@ class Athlet < ActiveRecord::Base
   # http://stackoverflow.com/questions/2033069/convert-data-when-putting-them-into-a-database-using-active-record
   # http://openbook.galileocomputing.de/ruby_on_rails/ruby_on_rails_10_004.htm
   def birthday
-    self[:birthday] ? self[:birthday].year : nil
+    #self[:birthday] ? self[:birthday].year : nil
+    self[:birthday] ? self[:birthday] : nil
   end
 
   def birthday=(value)
+
+    #datestr = String.try_convert(value)
+    #if !datestr.blank? && datestr.size > 3
+    #  datestr = datestr[0,4]
+    #else
+    #  if value.nil?
+    #    logger.warn 'setting initial date, because nil'
+    #  else
+    #    logger.warn 'setting initial date, because of any error: ' + value
+    #  end
+    # datestr = '2015'
+    #end
+    #self[:birthday] = Date.new(datestr.to_i,1,1)
     datestr = String.try_convert(value)
-    if !datestr.blank? && datestr.size > 3
-      datestr = datestr[0,4]
+    if !datestr.blank? && datestr.size == 4
+      self[:birthday] = Date.new(datestr.to_i,1,1)
     else
-      if value.nil?
-        logger.warn 'setting initial date, because nil'
-      else
-        logger.warn 'setting initial date, because of any error: ' + value
-      end
-      datestr = '2015'
+      self[:birthday] = Date.strptime(value, '%Y-%m-%d')
     end
-    self[:birthday] = Date.new(datestr.to_i,1,1)
   end
 
   # Virtual Attributes

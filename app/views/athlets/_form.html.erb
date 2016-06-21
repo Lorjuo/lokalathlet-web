@@ -23,7 +23,8 @@
               :data => { :autocomplete => autocomplete_surname_athlets_path } } %>
             <%= f.input :firstname, :input_html => { :class => :firstname,
               :data => { :autocomplete => autocomplete_firstname_athlets_path } } %>
-            <%= f.input :birthday, :as => :integer, :input_html => { :class => :birthday, :value => @athlet.birthday } %>
+            <%#= f.input :birthday, :as => :integer, :input_html => { :class => :birthday, :value => @athlet.birthday } %>
+            <%= f.input :birthday, :as => :string, :input_html => { :class => :birthday, :value => @athlet.birthday } %>
             <%# http://stackoverflow.com/questions/10767859/overriding-model-attribute-readers-does-not-affect-simple-form-input-fields %>
             <%#= f.input :sex %>
 
