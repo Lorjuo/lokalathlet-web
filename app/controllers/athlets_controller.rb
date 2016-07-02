@@ -25,12 +25,13 @@ class AthletsController < ApplicationController
 
 
   def index
+    debugger
     if params[:eventname]
-      p params[:eventname]
+      #p params[:eventname]
       @athlets = Athlet.order(:eventname).order(:starter).where(:eventname => params[:eventname])
     else
       if params[:transponderid]
-        p params[:transponderid]
+        #p params[:transponderid]
         #@athlets = Athlet.order(:event).order(:starter).where(:transponderid => params[:transponderid]).all
         @athlets = Athlet.joins(:event).where(events: {active: true}).order(:eventname).order(:starter).where(:transponderid => params[:transponderid]).all
       else

@@ -31,12 +31,12 @@
         <ul class="nav nav-pills nav-stacked">
         <% Event.where(:team_size => 1).where(:active => true).each do |event| %>
           <li>
-            <a href="/athlets">
+            <%= link_to athlets_path(:eventname => event.name) do %>
               <%= event.name %>
               <span class="badge badge-info pull-right">
                 <%= Athlet.where(:eventname => event.name).distinct.count %>
               </span>
-            </a>
+            <% end %>
           </li>
         <% end %>
       </ul><br />
@@ -56,12 +56,12 @@
       <ul class="nav nav-pills nav-stacked">
         <% Event.where.not(:team_size => 1).where(:active => true).each do |event| %>
           <li>
-            <a href="/relays">
+            <%= link_to relays_path(:eventname => event.name) do %>
               <%= event.name %>
               <span class="badge badge-success pull-right">
                 <%= Athlet.where(:eventname => event.name).distinct.count(:relaystarter) %>
               </span>
-            </a>
+            <% end %>
           </li>
         <% end %>
       </ul><br />
