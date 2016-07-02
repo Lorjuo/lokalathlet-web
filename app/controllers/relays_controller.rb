@@ -25,12 +25,14 @@ class RelaysController < ApplicationController
   def new
     event = Event.where(:name => params[:eventname]).first
     @relay = Relay.new(:relaytmsize => event.team_size, :eventname => event.name)
-    session[:eventRelay] = params[:eventRelay]
+    #session[:eventRelay] = params[:eventRelay]
+    session[:eventRelay] = @relay.eventRelay
   end
 
 
   def edit
-    session[:eventRelay] = params[:eventRelay]
+    #session[:eventRelay] = params[:eventRelay]
+    session[:eventRelay] = @relay.eventRelay
   end
 
 
@@ -47,6 +49,7 @@ class RelaysController < ApplicationController
 
   def update
     if @relay.update(relay_params)
+      session[:eventRelay] = @relay.eventRelay
       redirect_to relay_path(:id => @relay.relaystarter), notice: 'Relay was successfully updated.'
     else
       render :edit
@@ -56,6 +59,7 @@ class RelaysController < ApplicationController
 
   def destroy
     @relay.destroy
+    session[:eventRelay] = @relay.eventRelay
     redirect_to relays_url, notice: 'Relay was successfully destroyed.'
   end
 

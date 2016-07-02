@@ -92,7 +92,8 @@ class AthletsController < ApplicationController
   def new
     @athlet = Athlet.new(:eventname => params[:eventname])
     @athlet.relaytmsize = 1
-    session[:eventname] = params[:eventname]
+    session[:eventname] = @athlet.eventname
+    #session[:eventname] = params[:eventname]
   end
 
 
@@ -104,7 +105,8 @@ class AthletsController < ApplicationController
 
 
   def edit
-    session[:eventname] = params[:eventname]
+    session[:eventname] = @athlet.eventname
+    #params[:eventname]
   end
 
 
@@ -121,6 +123,7 @@ class AthletsController < ApplicationController
       @athlet.transponderid = @athlet.starter;
     end
     if @athlet.save
+      session[:eventname] = @athlet.eventname
       #https://github.com/rails-api/rails-api/blob/master/lib/rails-api/templates/rails/scaffold_controller/controller.rb
       respond_to do |format|
         format.html { redirect_to @athlet, notice: 'Athlet was successfully created.' }
@@ -171,6 +174,7 @@ class AthletsController < ApplicationController
       params[:athlet][:transponderid] = params[:athlet][:starter]
     end
     if @athlet.update(athlet_params)
+      session[:eventname] = @athlet.eventname
       #https://github.com/rails-api/rails-api/blob/master/lib/rails-api/templates/rails/scaffold_controller/controller.rb
       respond_to do |format|
         format.html { redirect_to @athlet, notice: 'Athlet was successfully updated.' }

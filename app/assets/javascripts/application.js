@@ -10,7 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// THIS HAS TO BE EXACTLY IN THIS ORDER:
+// https://github.com/kossnocorp/jquery.turbolinks#usage
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery-ui
 //= require jquery_ujs
 //
@@ -43,5 +46,6 @@
 //
 //= require suggestion_box
 // 
-// require turbolinks # Problems with ajax requests
-// require_tree .
+//# Has to be the last (https://github.com/kossnocorp/jquery.turbolinks)
+//= require turbolinks
+//# require_tree .

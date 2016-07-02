@@ -34,4 +34,10 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  # 
+  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+  #Then run Rails like this:
+  #TRUSTED_IP=66.68.96.220 rails s
+  #BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
+
 end
