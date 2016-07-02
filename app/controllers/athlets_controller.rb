@@ -25,7 +25,6 @@ class AthletsController < ApplicationController
 
 
   def index
-    debugger
     if params[:eventname]
       #p params[:eventname]
       @athlets = Athlet.order(:eventname).order(:starter).where(:eventname => params[:eventname])

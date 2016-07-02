@@ -1,5 +1,9 @@
 # Web-Client Desktop Application based on Ruby on Rails #
 
+### Helpful commands
+
+* kill -9 `cat tmp/pids/server.pid`
+
 ### What is this repository for? ###
 
 * Desktop Interface for managing Competitions and their Athlets before and during the Competition
@@ -25,3 +29,4 @@
 
 * Repo owner or admin
 * Other community or team contact
+
