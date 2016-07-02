@@ -68,11 +68,14 @@ class Athlet < ActiveRecord::Base
     # datestr = '2015'
     #end
     #self[:birthday] = Date.new(datestr.to_i,1,1)
+    if value.blank?
+      value = "1970-01-01"
+    end
     datestr = String.try_convert(value)
-    if !datestr.blank? && datestr.size == 4
+    if datestr.size == 4
       self[:birthday] = Date.new(datestr.to_i,1,1)
     else
-      self[:birthday] = Date.strptime(value, '%Y-%m-%d')
+      self[:birthday] = Date.strptime(datestr, '%Y-%m-%d')
     end
   end
 
