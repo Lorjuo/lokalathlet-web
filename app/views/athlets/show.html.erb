@@ -1,35 +1,49 @@
-<dl class="dl-horizontal">
-  <dt>Starter:</dt>
-  <dd><%= @athlet.starter %></dd>
+<br />
+<br />
 
-  <dt>Firstname:</dt>
-  <dd><%= @athlet.firstname %></dd>
+<div class="row">
+<div class="col-md-6">
 
-  <dt>Surname:</dt>
-  <dd><%= @athlet.surname %></dd>
+<table class="table huge">
+  <tr><th>Starter:</th>
+  <td><%= @athlet.starter %></span></td></tr>
 
-  <dt>Birthday:</dt>
-  <dd><%= @athlet.birthday %></dd>
 
-  <dt>Sex:</dt>
-  <dd><%= @athlet.sex %></dd>
 
-  <dt>Club:</dt>
-  <dd><%= @athlet.club %></dd>
+  <tr><th width="50%">Vorname:</th>
+  <td><%= @athlet.firstname %></td></tr>
 
-  <dt>Event:</dt>
-  <dd><%= @athlet.eventname %></dd>
+  <tr><th>Nachname:</th>
+  <td><%= @athlet.surname %></td></tr>
 
-  <dt>Relay Team Size:</dt>
-  <dd><%= @athlet.relaytmsize %></dd>
+  <tr><th>Geburtstag:</th>
+  <td><%= @athlet.birthday %></td></tr>
 
-  <dt>Transponder Id:</dt>
-  <dd><%= @athlet.transponderid %></dd>
+  <tr><th>Geschlecht:</th>
+  <td><%= @athlet.sex %></td></tr>
 
-  <dt>Startzeit:</dt>
-  <dd><%= @athlet.starttime %></dd>
-</dl>
+  <tr><th>Club:</th>
+  <td><%= @athlet.club %></td></tr>
+
+  <tr><th>Event:</th>
+  <td><%= @athlet.eventname %></td></tr>
+
+  <tr><th>Relay Team Size:</th>
+  <td><%= @athlet.relaytmsize %></td></tr>
+
+  <tr><th>Transponder Id:</th>
+  <td><%= @athlet.transponderid %></td></tr>
+
+  <tr><th>Startzeit:</th>
+  <td><%= @athlet.starttime %></td></tr>
+</table>
+
+</div>
+</div>
+
+<br />
+<br />
 
 <%= link_to 'Bearbeiten', edit_athlet_path(@athlet) %> |
 <%= link_to 'Übersicht', athlets_path %> |
-<%= link_to 'Weiteren Erfassen', new_athlet_path %>
+<%= link_to 'Weiteren Athleten erfassen', new_athlet_path(:eventname => @athlet.eventname) %>

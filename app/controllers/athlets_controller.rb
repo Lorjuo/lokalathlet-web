@@ -26,9 +26,13 @@ class AthletsController < ApplicationController
 
   def index
     if params[:eventname]
-      #p params[:eventname]
-      @athlets = Athlet.order(:eventname).order(:starter).where(:eventname => params[:eventname])
-    else
+      session[:eventname] = params[:eventname]
+    end
+    # if params[:eventname]
+    #   #p params[:eventname]
+    #   debugger
+    #   @athlets = Athlet.order(:eventname).order(:starter).where(:eventname => params[:eventname])
+    # else
       if params[:transponderid]
         #p params[:transponderid]
         #@athlets = Athlet.order(:event).order(:starter).where(:transponderid => params[:transponderid]).all
@@ -36,7 +40,7 @@ class AthletsController < ApplicationController
       else
         @athlets = Athlet.order(:eventname).order(:starter).all
       end
-    end
+    #end
 
     #@athlets = Athlet.where(:relaytmsize => 1).all
     #@relays = Athlet.where.not(:relaytmsize => 1).group(:relaystarter)

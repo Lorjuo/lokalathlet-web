@@ -4,6 +4,10 @@ class RelaysController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def index
+    
+    if params[:eventname]
+      session[:eventRelay] = params[:eventname]
+    end
     # @relays = Relay.all
 
     # respond_to do |format|
