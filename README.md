@@ -10,6 +10,14 @@
 * Version 1.0
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
+### Import von Dateien
+
+Issue: fehlende Titelzeile
+darauf achten, dass die erste Zeile auch die Titel enthaelt.
+Scheint beim export in cvs ein Problem zu sein. Daher vor reimport die Datei checken
+
+
+
 ### How do I get set up? ###
 
 * Summary of set up
