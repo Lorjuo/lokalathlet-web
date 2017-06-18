@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'thin'
+
 gem 'activerecord-tableless', '~> 1.0', git: 'git://github.com/david135/activerecord-tableless.git'
 
 # https://github.com/rails/rails/issues/18739
@@ -103,8 +105,6 @@ group :development do
   gem 'byebug'
   
   #gem "rails-i18n-debug"
-  
-  #gem 'thin'
 
   # Error Handling
   gem 'better_errors'
