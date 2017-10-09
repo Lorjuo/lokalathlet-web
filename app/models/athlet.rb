@@ -16,6 +16,7 @@
 #  updated_at   :datetime
 #  relaytmsize  :integer
 #  transponderid :string(255)
+#  additionals : json
 #
 
 class Athlet < ActiveRecord::Base
@@ -24,10 +25,10 @@ class Athlet < ActiveRecord::Base
   belongs_to :event, :foreign_key => 'eventname', :primary_key => 'name'
 
   def self.allowed_attributes
-    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'eventname', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime']
+    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'eventname', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime', 'additionals']
   end
   def self.allowed_attributes_xls
-    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'event', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime']
+    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'club', 'event', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime', 'additionals']
   end
 
   require 'csv'

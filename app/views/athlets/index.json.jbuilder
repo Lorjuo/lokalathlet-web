@@ -12,4 +12,5 @@ json.array! @athlets do |athlet|
   json.relaytmsize athlet.relaytmsize
   json.transponderid athlet.transponderid
   json.starttime athlet.starttime
+  json.additionals athlet.additionals
 end

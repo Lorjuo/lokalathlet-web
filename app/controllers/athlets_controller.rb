@@ -245,10 +245,10 @@ class AthletsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def athlet_params
-    params.require(:athlet).permit(:starter, :firstname, :surname, :birthday, :sex, :club, :eventname, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime)
+    params.require(:athlet).permit(:starter, :firstname, :surname, :birthday, :sex, :club, :eventname, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime, :additionals)
   end
 
   def check_permission(attributes)
-    attributes.permit(:starter, :firstname, :surname, :birthday, :sex, :club, :eventname, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime)
+    attributes.permit(:starter, :firstname, :surname, :birthday, :sex, :club, :eventname, :relaytm, :relaystarter, :relaytmsize, :transponderid, :starttime, :additionals)
   end
 end

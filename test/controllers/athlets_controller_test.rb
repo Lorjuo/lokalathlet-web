@@ -19,7 +19,7 @@ class AthletsControllerTest < ActionController::TestCase
   test "should create athlet" do
     assert_difference('Athlet.count') do
       post :create, athlet: {birthday: @athlet.birthday, club: @athlet.club, eventname: @athlet.eventname, firstname: @athlet.firstname, relaystarter: @athlet.relaystarter, relaytm: @athlet.relaytm, sex: @athlet.sex, starter: @athlet.starter, surname: @athlet.surname,
-                             transponderid: @athlet.transponderid }
+                             transponderid: @athlet.transponderid, additionals: @athlet.additionals }
     end
 
     assert_redirected_to athlet_path(assigns(:athlet))
@@ -37,7 +37,7 @@ class AthletsControllerTest < ActionController::TestCase
 
   test "should update athlet" do
     patch :update, id: @athlet, athlet: {birthday: @athlet.birthday, club: @athlet.club, eventname: @athlet.eventname, firstname: @athlet.firstname, relaystarter: @athlet.relaystarter, relaytm: @athlet.relaytm, sex: @athlet.sex, starter: @athlet.starter, surname: @athlet.surname,
-                                         transponderid: @athlet.transponderid }
+                                         transponderid: @athlet.transponderid, additionals: @athlet.additionals }
     assert_redirected_to athlet_path(assigns(:athlet))
   end
 

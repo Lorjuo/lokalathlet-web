@@ -24,7 +24,7 @@ class RelayMember < ActiveRecord::Base
   self.table_name = "athlets"
 
   def self.allowed_attributes
-    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime']
+    ['id', 'starter', 'firstname', 'surname', 'birthday', 'sex', 'relaytm', 'relaystarter', 'relaytmsize', 'transponderid', 'starttime', 'additionals']
   end
 
   # Validation

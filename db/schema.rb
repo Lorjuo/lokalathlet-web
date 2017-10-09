@@ -11,24 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140602140606) do
+ActiveRecord::Schema.define(version: 20171009121558) do
 
-  create_table "athlets", force: true do |t|
-    t.integer  "starter"
-    t.string   "firstname"
-    t.string   "surname"
-    t.date     "birthday"
-    t.string   "sex"
-    t.string   "club"
-    t.string   "eventname"
-    t.integer  "relaytm"
-    t.integer  "relaystarter"
-    t.integer  "relaytmsize"
-    t.string   "transponderid"
-    t.string   "starttime"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "athlets" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "events", force: true do |t|
     t.string   "name"
