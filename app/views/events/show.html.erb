@@ -11,5 +11,5 @@
   <dd><%= @event.active %></dd>
 </dl>
 
-<%= link_to 'Bearbeiten', edit_event_path(@event) %> |
-<%= link_to 'Zurück', events_path %>
+<%= link_to 'Bearbeiten', edit_event_path(@event), :class => 'btn btn-default' %>
+<%= link_to 'Übersicht', events_path, :class => 'btn btn-default' %>

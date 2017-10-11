@@ -44,5 +44,5 @@
   </dl>
 <% end %>
 
-<%= link_to 'Edit', edit_multiple_athlets_path(:relaystarter => @athlets.first.relaystarter) %> |
-<%= link_to 'Back', athlets_path %>
+<%= link_to 'Bearbeiten', edit_multiple_athlets_path(:relaystarter => @athlets.first.relaystarter), :class => 'btn btn-default' %>
+<%= link_to 'Übersicht', athlets_path, :class => 'btn btn-default' %>

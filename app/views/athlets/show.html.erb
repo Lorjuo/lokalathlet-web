@@ -4,11 +4,17 @@
 <div class="row">
 <div class="col-md-6">
 
-<table class="table huge">
+  <%= link_to 'Bearbeiten', edit_athlet_path(@athlet), :class => 'btn btn-default' %>
+  <%= link_to 'Übersicht', athlets_path, :class => 'btn btn-default' %>
+  <%= link_to 'Weiteren Athleten erfassen', new_athlet_path(:eventname => @athlet.eventname), :class => 'btn btn-default' %>
+
+
+  <br />
+  <br />
+
+  <table class="table huge">
   <tr><th>Starter:</th>
   <td><%= @athlet.starter %></span></td></tr>
-
-
 
   <tr><th width="50%">Vorname:</th>
   <td><%= @athlet.firstname %></td></tr>
@@ -45,9 +51,3 @@
 </div>
 </div>
 
-<br />
-<br />
-
-<%= link_to 'Bearbeiten', edit_athlet_path(@athlet) %> |
-<%= link_to 'Übersicht', athlets_path %> |
-<%= link_to 'Weiteren Athleten erfassen', new_athlet_path(:eventname => @athlet.eventname) %>

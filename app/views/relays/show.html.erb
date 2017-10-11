@@ -15,6 +15,13 @@
   <dd><%= @relay.relaystarttime %></dd>
 </dl>
 
+<%= link_to 'Bearbeiten', edit_relay_path(:id => @relay.relaystarter), :class => 'btn btn-default' %>
+<%= link_to 'Übersicht', relays_path, :class => 'btn btn-default' %>
+<%= link_to 'Neues Team', new_relay_path(:eventname => @relay.eventname), :class => 'btn btn-default' %>
+
+<br />
+<br />
+
 <table class="table table-bordered table-striped datatable searchable">
   <thead>
   <tr>
@@ -45,7 +52,4 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_relay_path(:id => @relay.relaystarter) %> |
-<%= link_to 'Back', relays_path %>
-<%= link_to 'Weiteres Team erfassen', new_relay_path(:eventname => @relay.eventname) %>
 

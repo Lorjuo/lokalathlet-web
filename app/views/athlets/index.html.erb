@@ -26,10 +26,9 @@
             </div>
           </div>
         </div>
-
+        <%= link_to 'Neuer Athlet', new_athlet_path(:eventname => event.name), :class => 'btn btn-primary' %>
         <br />
-        <%= link_to 'Neuen Athleten anmelden', new_athlet_path(:eventname => event.name), :class => 'btn btn-default' %>
-
+        <br />
         <table class="table table-bordered table-striped datatable searchable">
           <thead>
           <tr>
@@ -75,7 +74,7 @@
           </tbody>
         </table>
 
-        <%= link_to 'Neuen Athleten anmelden', new_athlet_path(:eventname => event.name), :class => 'btn btn-default' %>
+        <%= link_to 'Neuer Athlet', new_athlet_path(:eventname => event.name), :class => 'btn btn-primary' %>
       </div>
   <% end %>
 </div>

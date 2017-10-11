@@ -26,10 +26,9 @@
             </div>
           </div>
         </div>
-        
+        <%= link_to 'Neues Team', new_relay_path(:eventname => event.name), :class => 'btn btn-primary' %>
         <br />
-        <%= link_to 'Neues Team anmelden', new_relay_path(:eventname => event.name), :class => 'btn btn-default' %>
-
+        <br />
         <table class="table table-bordered table-striped datatable searchable">
           <thead>
           <tr>
@@ -61,7 +60,7 @@
           <% end %>
           </tbody>
         </table>
-        <%= link_to 'Neues Team anmelden', new_relay_path(:eventname => event.name), :class => 'btn btn-default' %>
+        <%= link_to 'Neues Team', new_relay_path(:eventname => event.name), :class => 'btn btn-primary' %>
       </div>
   <% end %>
 </div>

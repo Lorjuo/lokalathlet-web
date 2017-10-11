@@ -1,6 +1,6 @@
 <h1>Veranstaltung bearbeiten</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Details', @event %> |
-<%= link_to 'Zurück', events_path %>
+<br>
+<%= link_to 'Details', @event, :class => 'btn btn-default' %>
+<%= link_to 'Übersicht', events_path, :class => 'btn btn-default' %>

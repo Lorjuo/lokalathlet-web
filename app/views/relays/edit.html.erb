@@ -4,6 +4,6 @@
 <%# pp @replay %>
 <%#= render 'form', :formurl => "/relays/#{@relay.relaystarter}", :formmethod => :put %>
 <%= render 'form' %>
-
-<%= link_to 'Details', relay_path(:id => @relay.relaystarter) %> |
-<%= link_to 'Zurück', relays_path %>
+<br>
+<%= link_to 'Details', relay_path(:id => @relay.relaystarter), :class => 'btn btn-default' %>
+<%= link_to 'Übersicht', relays_path, :class => 'btn btn-default' %>
