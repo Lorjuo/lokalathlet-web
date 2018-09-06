@@ -38,13 +38,13 @@ class Athlet < ActiveRecord::Base
   validates :starter, :presence => true, :inclusion => 0..99999 # TODO: restrict this
   #http://stackoverflow.com/questions/3276110/rails-3-validation-on-uniqueness-on-multiple-attributes
   validates :starter, :uniqueness => {:scope => [:event]}
-  validates :firstname, :presence => true, length: { minimum: 2 }
-  validates :surname, :presence => true, length: { minimum: 2 }
+  validates :firstname, :presence => true, length: { minimum: 1 }
+  validates :surname, :presence => true, length: { minimum: 1 }
   # validates :name, uniqueness: { scope: :year, message: "should happen once per year" }
   # validates :birthday, :presence => true, :inclusion => 1900..2100
   validates :birthday, :presence => true
   validates :sex, :presence => true
-  #validates :club, :allow_blank => :true, length: { minimum: 3 }
+  #validates :club, :allow_blank => :true, length: { minimum: 1 }
   validates :eventname, :presence => true
 
   # Getter / Setter

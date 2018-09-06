@@ -13,7 +13,7 @@ class Relay < Tableless
   column :relaystarttime, :string
 
 
-  validates :club, :presence => true, length: { minimum: 3 }
+  validates :club, :presence => true, length: { minimum: 1 }
   validates :eventname, :presence => true
   validates :relaystarter, :presence => true
 

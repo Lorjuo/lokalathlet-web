@@ -28,8 +28,8 @@ class RelayMember < ActiveRecord::Base
   end
 
   # Validation
-  validates :firstname, :presence => true, length: { minimum: 3 }
-  validates :surname, :presence => true, length: { minimum: 3 }
+  validates :firstname, :presence => true, length: { minimum: 1 }
+  validates :surname, :presence => true, length: { minimum: 1 }
   #validates :birthday, :presence => true, :inclusion => 1900..2100
   validates :birthday, :presence => true
   validates :sex, :presence => true
