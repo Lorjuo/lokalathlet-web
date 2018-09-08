@@ -16,6 +16,9 @@ Issue: fehlende Titelzeile
 darauf achten, dass die erste Zeile auch die Titel enthaelt.
 Scheint beim export in cvs ein Problem zu sein. Daher vor reimport die Datei checken
 
+### create a new Database
+rake db:migrate RAILS_ENV=development
+
 ### Add column to existing model
 Mr-Lokalathlet:lokalathlet-web michaelross$ rails g migration add_additionals_to_athlets additionals:json  
       invoke  active_record
