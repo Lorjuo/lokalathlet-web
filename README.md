@@ -3,6 +3,8 @@
 ### Helpful commands
 
 * kill -9 `cat tmp/pids/server.pid`
+search for pid of service using port 3002
+* sudo lsof -i tcp:3002 
 
 ### What is this repository for? ###
 

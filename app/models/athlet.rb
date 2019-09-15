@@ -35,7 +35,9 @@ class Athlet < ActiveRecord::Base
   require 'to_xls-rails'
 
   # Validation
-  validates :starter, :presence => true, :inclusion => 0..99999 # TODO: restrict this
+  validates :starter, :presence => true
+  validates :starter, :inclusion => 0..99999 # TODO: restrict this
+  # validates_inclusion_of :starter, :in => start_number..end_number
   #http://stackoverflow.com/questions/3276110/rails-3-validation-on-uniqueness-on-multiple-attributes
   validates :starter, :uniqueness => {:scope => [:event]}
   validates :firstname, :presence => true, length: { minimum: 1 }
