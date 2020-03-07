@@ -120,7 +120,7 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
-    ffi (1.9.10)
+    ffi (1.12.2)
     font-awesome-rails (4.5.0.0)
       railties (>= 3.2, < 5.0)
     hirb (0.7.3)
