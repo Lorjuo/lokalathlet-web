@@ -42,7 +42,7 @@ gem 'quiet_assets' # Disable some warnings
 
 # CSS
 # Bootstrap
-gem 'bootstrap-sass', '~> 3.3.4'
+gem 'bootstrap-sass', '~> 3.4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
